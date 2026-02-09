@@ -1,0 +1,759 @@
+{
+  "meta": {
+    "product_name": "Contentry.ai",
+    "version": "1.0",
+    "last_updated": "2026-01-02",
+    "analysis_type": "Complete Product Feature Audit",
+    "prepared_for": "Emergent.sh / Right Management Demo"
+  },
+  "core_platform": {
+    "technology_stack": {
+      "frontend": {
+        "framework": "React (Next.js)",
+        "language": "JavaScript/TypeScript",
+        "ui_library": "Chakra UI + Shadcn components",
+        "status": "IMPLEMENTED"
+      },
+      "backend": {
+        "framework": "FastAPI (Python)",
+        "language": "Python 3.11+",
+        "status": "IMPLEMENTED"
+      },
+      "database": {
+        "primary": "MongoDB (Motor async driver)",
+        "caching": "In-memory (Redis planned)",
+        "status": "IMPLEMENTED"
+      },
+      "ai_models": {
+        "text_generation": [
+          {"provider": "OpenAI", "model": "GPT-4.1-mini", "tier": "TOP_TIER", "use_case": "Complex reasoning, in-depth analysis"},
+          {"provider": "Google", "model": "Gemini 2.5 Flash", "tier": "BALANCED", "use_case": "Creative content, speed/quality balance"},
+          {"provider": "OpenAI", "model": "GPT-4.1-nano", "tier": "FAST", "use_case": "Rapid, simple tasks"}
+        ],
+        "image_generation": [
+          {"provider": "OpenAI", "model": "gpt-image-1 (DALL-E)", "use_case": "Photorealistic and complex images"},
+          {"provider": "Google", "model": "Gemini Imagen (Nano Banana)", "use_case": "Creative and stylized images"}
+        ],
+        "vision_analysis": [
+          {"provider": "Google", "model": "Google Vision API", "use_case": "Image content analysis, safety checks"}
+        ],
+        "status": "IMPLEMENTED"
+      }
+    },
+    "architecture_patterns": [
+      "Multi-tenant SaaS with tenant isolation",
+      "Role-based access control (RBAC)",
+      "Background job processing with async tasks",
+      "Circuit breaker pattern for external services",
+      "Feature flags for gradual rollout",
+      "Distributed tracing and observability"
+    ]
+  },
+  "feature_categories": {
+    "content_creation": {
+      "category_id": "CC",
+      "description": "AI-powered content generation capabilities",
+      "features": [
+        {
+          "id": "CC-001",
+          "name": "AI Content Generation",
+          "description": "Generate social media posts, articles, blog posts using AI",
+          "status": "IMPLEMENTED",
+          "maturity": "Production-ready",
+          "endpoints": ["/api/v1/content/generate", "/api/v1/content/generate/async", "/api/v1/ai/generate"],
+          "capabilities": [
+            "Multi-platform content (LinkedIn, Twitter, Facebook, Instagram)",
+            "Tone customization (professional, casual, formal, etc.)",
+            "SEO-optimized blog posts",
+            "Long-form articles (1000+ words)",
+            "Social media batch generation",
+            "Hashtag generation",
+            "Platform-specific formatting"
+          ]
+        },
+        {
+          "id": "CC-002",
+          "name": "Content Rewriting",
+          "description": "Rewrite existing content with different tones, styles, or lengths",
+          "status": "IMPLEMENTED",
+          "maturity": "Production-ready",
+          "endpoints": ["/api/v1/ai/rewrite"],
+          "capabilities": [
+            "Tone change",
+            "Summarization",
+            "Expansion",
+            "Simplification",
+            "SEO optimization"
+          ]
+        },
+        {
+          "id": "CC-003",
+          "name": "Content Repurposing",
+          "description": "Convert content from one format to another",
+          "status": "IMPLEMENTED",
+          "maturity": "Production-ready",
+          "endpoints": ["/api/v1/ai/repurpose"],
+          "capabilities": [
+            "Podcast to multiple formats",
+            "Video script generation",
+            "Transcription summarization"
+          ]
+        },
+        {
+          "id": "CC-004",
+          "name": "AI Image Generation",
+          "description": "Generate images to accompany content",
+          "status": "IMPLEMENTED",
+          "maturity": "Production-ready",
+          "endpoints": ["/api/v1/ai/generate-image/async"],
+          "capabilities": [
+            "Photorealistic images",
+            "Creative/stylized images",
+            "Infographics",
+            "Social media visuals"
+          ]
+        },
+        {
+          "id": "CC-005",
+          "name": "Content Ideation",
+          "description": "Generate content ideas and topics",
+          "status": "IMPLEMENTED",
+          "maturity": "Production-ready",
+          "endpoints": ["/api/v1/ai/ideate"]
+        },
+        {
+          "id": "CC-006",
+          "name": "Content Optimization",
+          "description": "Optimize existing content for engagement",
+          "status": "IMPLEMENTED",
+          "maturity": "Production-ready",
+          "endpoints": ["/api/v1/ai/optimize"]
+        }
+      ]
+    },
+    "content_analysis": {
+      "category_id": "CA",
+      "description": "Content scoring, compliance checking, and risk detection",
+      "features": [
+        {
+          "id": "CA-001",
+          "name": "Content Analysis & Scoring",
+          "description": "Comprehensive analysis with multi-dimensional scoring",
+          "status": "IMPLEMENTED",
+          "maturity": "Production-ready",
+          "endpoints": ["/api/v1/content/analyze", "/api/v1/content/analyze-with-image"],
+          "scoring_system": {
+            "overall_score": {
+              "description": "Weighted composite score (0-100)",
+              "calculation": "Standard: (Compliance × 0.4) + (Cultural × 0.3) + (Accuracy × 0.3)",
+              "risk_adjustments": [
+                "High Risk (Compliance ≤ 60): Compliance weight increases to 0.5",
+                "Reputation Risk (Cultural ≤ 50): Cultural weight increases to 0.4",
+                "Critical (Compliance ≤ 40): Hard cap at 40"
+              ]
+            },
+            "compliance_score": {
+              "description": "Penalty-based score starting at 100",
+              "violations": [
+                {"severity": "Critical", "penalty": -60, "examples": ["NDA Breach", "Confidential Info"]},
+                {"severity": "Severe", "penalty": -40, "examples": ["Harassment"]},
+                {"severity": "High", "penalty": -25, "examples": ["Missing Advertising Disclosure"]},
+                {"severity": "Moderate", "penalty": -10, "examples": ["Inappropriate Tone"]}
+              ]
+            },
+            "cultural_sensitivity_score": {
+              "description": "Based on Hofstede's 6 Cultural Dimensions",
+              "dimensions": [
+                "Power Distance",
+                "Individualism vs Collectivism",
+                "Masculinity vs Femininity",
+                "Uncertainty Avoidance",
+                "Long-Term Orientation",
+                "Indulgence vs Restraint"
+              ]
+            },
+            "accuracy_score": {
+              "description": "Penalty-based score for factual accuracy",
+              "issues": [
+                {"type": "Major Inaccuracy/Misinformation", "penalty": -40},
+                {"type": "Non-Credible Source", "penalty": -20},
+                {"type": "Unverifiable Claim", "penalty": -10}
+              ]
+            }
+          }
+        },
+        {
+          "id": "CA-002",
+          "name": "Compliance Checking",
+          "description": "Check content against policy guidelines and regulations",
+          "status": "IMPLEMENTED",
+          "maturity": "Production-ready",
+          "checks": [
+            "Policy violation detection",
+            "Harassment detection",
+            "Confidential information detection",
+            "Advertising disclosure requirements",
+            "Brand guideline compliance"
+          ]
+        },
+        {
+          "id": "CA-003",
+          "name": "Risk Detection & Flagging",
+          "description": "Identify and flag content risks before publishing",
+          "status": "IMPLEMENTED",
+          "maturity": "Production-ready",
+          "risk_categories": [
+            "Rude and Abusive",
+            "Contains Harassment",
+            "Policy Violation",
+            "Needs Attention",
+            "Good Coverage"
+          ]
+        },
+        {
+          "id": "CA-004",
+          "name": "Image Content Analysis",
+          "description": "Analyze images for safety and appropriateness",
+          "status": "IMPLEMENTED",
+          "maturity": "Beta",
+          "dependency": "Google Vision API (requires billing enabled)",
+          "capabilities": [
+            "Safe search detection",
+            "Content moderation labels",
+            "Object detection"
+          ]
+        }
+      ]
+    },
+    "workflow_governance": {
+      "category_id": "WG",
+      "description": "Approval workflows and content governance",
+      "features": [
+        {
+          "id": "WG-001",
+          "name": "Multi-Stage Approval Workflows",
+          "description": "Configurable content approval process",
+          "status": "IMPLEMENTED",
+          "maturity": "Production-ready",
+          "endpoints": ["/api/v1/approval/submit", "/api/v1/approval/approve", "/api/v1/approval/reject"],
+          "capabilities": [
+            "Submit content for review",
+            "Approve/reject with comments",
+            "View pending approvals",
+            "Track approval history",
+            "Role-based approval permissions"
+          ]
+        },
+        {
+          "id": "WG-002",
+          "name": "Content Scheduling",
+          "description": "Schedule content for future publishing",
+          "status": "IMPLEMENTED",
+          "maturity": "Production-ready",
+          "endpoints": ["/api/v1/scheduler/schedule-prompt", "/api/v1/scheduler/scheduled-prompts"],
+          "capabilities": [
+            "One-time scheduling",
+            "Recurring schedules (daily, weekly, monthly)",
+            "Auto-post after generation",
+            "Re-analyze before posting",
+            "Multi-platform scheduling"
+          ]
+        },
+        {
+          "id": "WG-003",
+          "name": "Project Management",
+          "description": "Organize content into projects",
+          "status": "IMPLEMENTED",
+          "maturity": "Production-ready",
+          "endpoints": ["/api/v1/projects"],
+          "capabilities": [
+            "Create/archive projects",
+            "Add content to projects",
+            "Project metrics and calendar view"
+          ]
+        }
+      ]
+    },
+    "team_collaboration": {
+      "category_id": "TC",
+      "description": "Multi-user collaboration features",
+      "features": [
+        {
+          "id": "TC-001",
+          "name": "Team Management",
+          "description": "Invite and manage team members",
+          "status": "IMPLEMENTED",
+          "maturity": "Production-ready",
+          "endpoints": ["/api/v1/team/members", "/api/v1/team/invite"],
+          "capabilities": [
+            "Invite members via email",
+            "Accept/decline invitations",
+            "Remove team members",
+            "View team hierarchy"
+          ]
+        },
+        {
+          "id": "TC-002",
+          "name": "Role-Based Access Control",
+          "description": "Fixed role system (Creator/Manager/Admin)",
+          "status": "IMPLEMENTED",
+          "maturity": "Production-ready",
+          "roles": [
+            {"name": "Creator", "permissions": ["Create content", "Submit for approval", "View own analytics"]},
+            {"name": "Manager", "permissions": ["All Creator permissions", "Approve/reject content", "Publish content", "View team analytics"]},
+            {"name": "Admin", "permissions": ["All permissions", "Manage team", "Manage settings", "Manage billing"]}
+          ]
+        },
+        {
+          "id": "TC-003",
+          "name": "Granular Permissions (Planned)",
+          "description": "Custom roles with fine-grained permissions",
+          "status": "PLANNED",
+          "maturity": "Design complete",
+          "documentation": "/app/docs/GRANULAR_PERMISSIONS_DESIGN.md",
+          "planned_capabilities": [
+            "Custom role creation",
+            "Permission inheritance",
+            "Role templates",
+            "Audit logging"
+          ]
+        },
+        {
+          "id": "TC-004",
+          "name": "Team Analytics",
+          "description": "View team performance metrics",
+          "status": "IMPLEMENTED",
+          "maturity": "Production-ready",
+          "endpoints": ["/api/v1/team/analytics"]
+        }
+      ]
+    },
+    "integrations": {
+      "category_id": "INT",
+      "description": "External system integrations",
+      "features": [
+        {
+          "id": "INT-001",
+          "name": "Social Media Publishing",
+          "description": "Direct publishing to social platforms",
+          "status": "IMPLEMENTED",
+          "maturity": "Production-ready",
+          "platforms": ["LinkedIn", "Twitter/X", "Facebook", "Instagram"],
+          "endpoints": ["/api/v1/social/profiles", "/api/v1/social/posts"]
+        },
+        {
+          "id": "INT-002",
+          "name": "SSO Integration",
+          "description": "Single Sign-On with enterprise identity providers",
+          "status": "IMPLEMENTED",
+          "maturity": "Production-ready",
+          "providers": ["Microsoft Azure AD", "Okta"],
+          "endpoints": ["/api/v1/sso/microsoft/login", "/api/v1/sso/okta/login"]
+        },
+        {
+          "id": "INT-003",
+          "name": "Payment Integration",
+          "description": "Subscription billing via Stripe",
+          "status": "IMPLEMENTED",
+          "maturity": "Production-ready",
+          "endpoints": ["/api/v1/subscriptions/checkout", "/api/v1/payments/webhook/stripe"]
+        },
+        {
+          "id": "INT-004",
+          "name": "Browser Extension",
+          "description": "Chrome extension for in-context content assistance",
+          "status": "IMPLEMENTED",
+          "maturity": "Beta",
+          "capabilities": [
+            "Extension login",
+            "In-context content suggestions"
+          ]
+        }
+      ]
+    },
+    "knowledge_management": {
+      "category_id": "KM",
+      "description": "Knowledge base and brand voice management",
+      "features": [
+        {
+          "id": "KM-001",
+          "name": "Strategic Profiles",
+          "description": "Brand voice and content strategy profiles",
+          "status": "IMPLEMENTED",
+          "maturity": "Production-ready",
+          "endpoints": ["/api/v1/profiles/strategic"],
+          "capabilities": [
+            "Create brand profiles",
+            "Define tone and voice",
+            "SEO keyword management",
+            "Website scraping for brand context",
+            "Upload knowledge documents"
+          ]
+        },
+        {
+          "id": "KM-002",
+          "name": "Knowledge Base (3-Tier System)",
+          "description": "Hierarchical knowledge storage",
+          "status": "IMPLEMENTED",
+          "maturity": "Production-ready",
+          "tiers": [
+            "Company-level knowledge (shared across enterprise)",
+            "Profile-level knowledge (per strategic profile)",
+            "User-level knowledge (personal documents)"
+          ],
+          "endpoints": ["/api/v1/user-knowledge/upload", "/api/v1/profiles/strategic/{id}/knowledge"]
+        },
+        {
+          "id": "KM-003",
+          "name": "AI Knowledge Agent",
+          "description": "Query knowledge base using natural language",
+          "status": "IMPLEMENTED",
+          "maturity": "Production-ready",
+          "endpoints": ["/api/v1/knowledge-agent/query"]
+        }
+      ]
+    },
+    "analytics_reporting": {
+      "category_id": "AR",
+      "description": "Analytics dashboards and reporting",
+      "features": [
+        {
+          "id": "AR-001",
+          "name": "User Dashboard",
+          "description": "Personal analytics and activity overview",
+          "status": "IMPLEMENTED",
+          "maturity": "Production-ready",
+          "endpoints": ["/api/v1/dashboard/stats"]
+        },
+        {
+          "id": "AR-002",
+          "name": "Enterprise Analytics",
+          "description": "Company-wide content and team metrics",
+          "status": "IMPLEMENTED",
+          "maturity": "Production-ready",
+          "metrics": [
+            "Content quality scores",
+            "Posting patterns",
+            "Language distribution",
+            "User demographics"
+          ]
+        },
+        {
+          "id": "AR-003",
+          "name": "Admin Dashboard",
+          "description": "Super admin platform metrics",
+          "status": "IMPLEMENTED",
+          "maturity": "Production-ready",
+          "endpoints": ["/api/v1/admin/stats", "/api/v1/admin/god-view-dashboard"],
+          "metrics": [
+            "MRR tracking",
+            "User growth",
+            "AI costs",
+            "Feature adoption"
+          ]
+        },
+        {
+          "id": "AR-004",
+          "name": "Usage Tracking",
+          "description": "Track API and feature usage",
+          "status": "IMPLEMENTED",
+          "maturity": "Production-ready",
+          "endpoints": ["/api/v1/usage/usage", "/api/v1/usage/history"]
+        }
+      ]
+    },
+    "security_compliance": {
+      "category_id": "SC",
+      "description": "Security and compliance features",
+      "features": [
+        {
+          "id": "SC-001",
+          "name": "Authentication",
+          "description": "User authentication and session management",
+          "status": "IMPLEMENTED",
+          "maturity": "Production-ready",
+          "methods": [
+            "Email/Password",
+            "Phone OTP",
+            "SSO (Microsoft, Okta)",
+            "Demo user access"
+          ]
+        },
+        {
+          "id": "SC-002",
+          "name": "GDPR Compliance",
+          "description": "Data protection and privacy features",
+          "status": "IMPLEMENTED",
+          "maturity": "Production-ready",
+          "capabilities": [
+            "Data export request",
+            "Account deletion request",
+            "GDPR request tracking"
+          ]
+        },
+        {
+          "id": "SC-003",
+          "name": "Rate Limiting",
+          "description": "API rate limiting by tier",
+          "status": "IMPLEMENTED",
+          "maturity": "Production-ready",
+          "endpoints": ["/api/v1/rate-limits/status"]
+        },
+        {
+          "id": "SC-004",
+          "name": "Multi-Tenant Isolation",
+          "description": "Data isolation between enterprises",
+          "status": "IMPLEMENTED",
+          "maturity": "Production-ready"
+        },
+        {
+          "id": "SC-005",
+          "name": "Secrets Management",
+          "description": "Secure credential storage",
+          "status": "IMPLEMENTED",
+          "maturity": "Production-ready",
+          "note": "Uses environment variables with AWS Secrets Manager fallback"
+        },
+        {
+          "id": "SC-006",
+          "name": "Prompt Injection Protection",
+          "description": "Protect AI models from prompt injection attacks",
+          "status": "IMPLEMENTED",
+          "maturity": "Production-ready"
+        },
+        {
+          "id": "SC-007",
+          "name": "Audit Trail",
+          "description": "Track user actions and changes",
+          "status": "PARTIAL",
+          "maturity": "Beta",
+          "note": "Full audit logging planned with granular permissions feature"
+        }
+      ]
+    },
+    "enterprise_features": {
+      "category_id": "EF",
+      "description": "Enterprise-specific capabilities",
+      "features": [
+        {
+          "id": "EF-001",
+          "name": "Multi-Tenant SaaS",
+          "description": "Support multiple companies on single platform",
+          "status": "IMPLEMENTED",
+          "maturity": "Production-ready"
+        },
+        {
+          "id": "EF-002",
+          "name": "Custom Branding",
+          "description": "Company logo and branding",
+          "status": "IMPLEMENTED",
+          "maturity": "Production-ready"
+        },
+        {
+          "id": "EF-003",
+          "name": "Subscription Management",
+          "description": "Tiered subscription plans",
+          "status": "IMPLEMENTED",
+          "maturity": "Production-ready",
+          "tiers": ["Basic", "Professional", "Enterprise"]
+        },
+        {
+          "id": "EF-004",
+          "name": "API Access",
+          "description": "REST API for integrations",
+          "status": "IMPLEMENTED",
+          "maturity": "Production-ready",
+          "documentation": "Auto-generated OpenAPI/Swagger"
+        }
+      ]
+    },
+    "observability": {
+      "category_id": "OBS",
+      "description": "Monitoring and observability",
+      "features": [
+        {
+          "id": "OBS-001",
+          "name": "Distributed Tracing",
+          "description": "Request tracing with OpenTelemetry",
+          "status": "IMPLEMENTED",
+          "maturity": "Production-ready"
+        },
+        {
+          "id": "OBS-002",
+          "name": "Circuit Breakers",
+          "description": "Fault tolerance for external services",
+          "status": "IMPLEMENTED",
+          "maturity": "Production-ready"
+        },
+        {
+          "id": "OBS-003",
+          "name": "SLO Monitoring",
+          "description": "Service Level Objective tracking",
+          "status": "IMPLEMENTED",
+          "maturity": "Production-ready"
+        },
+        {
+          "id": "OBS-004",
+          "name": "Feature Flags",
+          "description": "Toggle features without deployment",
+          "status": "IMPLEMENTED",
+          "maturity": "Production-ready"
+        }
+      ]
+    }
+  },
+  "languages_supported": {
+    "description": "Multi-language content generation and analysis",
+    "status": "IMPLEMENTED",
+    "primary_languages": ["English", "Spanish", "French", "German", "Portuguese", "Italian", "Dutch", "Japanese", "Chinese", "Korean"],
+    "ui_localization": true,
+    "content_generation": true,
+    "content_analysis": true
+  },
+  "reputation_management_capabilities": {
+    "direct_features": {
+      "brand_monitoring": {
+        "status": "NOT_IMPLEMENTED",
+        "description": "No built-in brand mention monitoring or social listening"
+      },
+      "sentiment_tracking": {
+        "status": "PARTIAL",
+        "description": "Content analysis includes sentiment as part of cultural sensitivity scoring, but not real-time tracking"
+      },
+      "crisis_response": {
+        "status": "NOT_IMPLEMENTED",
+        "description": "No dedicated crisis management or response features"
+      },
+      "competitive_intelligence": {
+        "status": "NOT_IMPLEMENTED",
+        "description": "No competitor tracking or analysis"
+      }
+    },
+    "indirect_capabilities": [
+      {
+        "capability": "Content Governance",
+        "relevance": "HIGH",
+        "description": "Approval workflows prevent reputation-damaging content from being published"
+      },
+      {
+        "capability": "Compliance Checking",
+        "relevance": "HIGH",
+        "description": "Detect policy violations, harassment, and inappropriate content before publishing"
+      },
+      {
+        "capability": "Cultural Sensitivity Analysis",
+        "relevance": "HIGH",
+        "description": "Prevent culturally insensitive content that could damage global reputation"
+      },
+      {
+        "capability": "Brand Voice Consistency",
+        "relevance": "MEDIUM",
+        "description": "Strategic profiles ensure consistent messaging across all content"
+      },
+      {
+        "capability": "Audit Trail",
+        "relevance": "MEDIUM",
+        "description": "Track who created/approved what content (partial implementation)"
+      }
+    ]
+  },
+  "limitations_constraints": {
+    "technical": [
+      {
+        "limitation": "No real-time social listening",
+        "impact": "Cannot monitor brand mentions or sentiment across social platforms",
+        "workaround": "Integration with third-party tools like Brandwatch or Sprout Social"
+      },
+      {
+        "limitation": "Google Vision API requires billing",
+        "impact": "Image analysis features fail without Google Cloud billing enabled",
+        "workaround": "User must enable billing in Google Cloud Console"
+      },
+      {
+        "limitation": "No Redis caching (in-memory only)",
+        "impact": "Permission checks may be slower at scale",
+        "workaround": "Redis integration planned"
+      },
+      {
+        "limitation": "Background jobs not using Celery",
+        "impact": "Limited job scaling and persistence",
+        "workaround": "Migration to Celery + Redis planned"
+      }
+    ],
+    "functional": [
+      {
+        "limitation": "Fixed role system (3 roles only)",
+        "impact": "Cannot create custom roles or fine-grained permissions",
+        "workaround": "Granular permissions feature is designed and planned"
+      },
+      {
+        "limitation": "No built-in crisis management",
+        "impact": "No automated crisis detection or response workflows",
+        "workaround": "Manual processes or third-party integration"
+      },
+      {
+        "limitation": "No email notification system",
+        "impact": "Users don't receive email alerts for approvals",
+        "workaround": "In-app notifications are implemented"
+      }
+    ],
+    "scalability": [
+      {
+        "limitation": "Single database instance",
+        "impact": "May need sharding for very large deployments",
+        "workaround": "MongoDB Atlas auto-scaling"
+      }
+    ]
+  },
+  "competitive_advantages": {
+    "unique_differentiators": [
+      {
+        "feature": "Built-in Compliance Checking",
+        "description": "AI-powered policy violation detection not available in most competitors",
+        "competitors_lack": ["Jasper", "Copy.ai", "Writesonic"]
+      },
+      {
+        "feature": "Cultural Sensitivity Analysis (Hofstede's Dimensions)",
+        "description": "Systematic cultural appropriateness scoring using academic framework",
+        "competitors_lack": ["All major competitors"]
+      },
+      {
+        "feature": "3-Tier Knowledge System",
+        "description": "Company, Profile, and User-level knowledge hierarchy",
+        "competitors_lack": ["Most competitors have single-tier knowledge"]
+      },
+      {
+        "feature": "Approval Workflows at Mid-Tier Pricing",
+        "description": "Competitors require Enterprise tier ($1K+/mo) for approval workflows",
+        "pricing_advantage": "Available at Professional tier"
+      }
+    ],
+    "price_advantages": [
+      "Approval workflows at $149/mo vs competitors' $1K+/mo",
+      "API access at Professional tier vs Enterprise-only at competitors",
+      "Team features at lower price point than Copy.ai Agents"
+    ]
+  },
+  "roadmap": {
+    "in_development": [
+      {
+        "feature": "Granular Permissions",
+        "status": "Design Complete",
+        "estimated_timeline": "6 weeks"
+      }
+    ],
+    "planned": [
+      {"feature": "Production Migration (Celery + Redis)", "priority": "P0"},
+      {"feature": "Enterprise SSO (Okta full integration)", "priority": "P1"},
+      {"feature": "Consumer OAuth (Google, Slack)", "priority": "P2"},
+      {"feature": "Email Notifications", "priority": "P3"},
+      {"feature": "Browser Extension Phase 2", "priority": "P2"}
+    ],
+    "future_considerations": [
+      "Real-time social listening integration",
+      "Crisis management module",
+      "Competitor tracking",
+      "AI-powered reputation risk scoring"
+    ]
+  }
+}

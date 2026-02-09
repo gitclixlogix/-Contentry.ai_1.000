@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp
+  xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+  xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0"
+  xsi:type="MailApp">
+
+  <Id>a1b2c3d4-e5f6-7890-abcd-ef1234567890</Id>
+  <Version>1.0.0</Version>
+  <ProviderName>Contentry.ai</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="Contentry.ai" />
+  <Description DefaultValue="Real-time content analysis and compliance checking for your emails" />
+  <IconUrl DefaultValue="https://contentry.ai/icon-64.png" />
+  <HighResolutionIconUrl DefaultValue="https://contentry.ai/icon-128.png" />
+  <SupportUrl DefaultValue="https://contentry.ai/support" />
+  <AppDomains>
+    <AppDomain>https://contentry.ai</AppDomain>
+  </AppDomains>
+
+  <Hosts>
+    <Host Name="Mailbox" />
+  </Hosts>
+
+  <Requirements>
+    <Sets>
+      <Set Name="Mailbox" MinVersion="1.1" />
+    </Sets>
+  </Requirements>
+
+  <FormSettings>
+    <Form xsi:type="ItemEdit">
+      <DesktopSettings>
+        <SourceLocation DefaultValue="https://localhost:3002/" />
+        <RequestedHeight>450</RequestedHeight>
+      </DesktopSettings>
+    </Form>
+  </FormSettings>
+
+  <Permissions>ReadWriteItem</Permissions>
+  <Rule xsi:type="RuleCollection" Mode="Or">
+    <Rule xsi:type="ItemIs" ItemType="Message" FormType="Edit" />
+  </Rule>
+
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Requirements>
+      <bt:Sets DefaultMinVersion="1.3">
+        <bt:Set Name="Mailbox" />
+      </bt:Sets>
+    </Requirements>
+
+    <Hosts>
+      <Host xsi:type="MailHost">
+        <DesktopFormFactor>
+          <FunctionFile resid="functionFile" />
+          
+          <ExtensionPoint xsi:type="MessageComposeCommandSurface">
+            <OfficeTab id="TabDefault">
+              <Group id="msgComposeGroup">
+                <Label resid="groupLabel" />
+                <Control xsi:type="Button" id="taskPaneButton">
+                  <Label resid="taskPaneButtonLabel" />
+                  <Supertip>
+                    <Title resid="taskPaneButtonTitle" />
+                    <Description resid="taskPaneButtonDescription" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="icon16" />
+                    <bt:Image size="32" resid="icon32" />
+                    <bt:Image size="80" resid="icon80" />
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <SourceLocation resid="taskPaneUrl" />
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+
+    <Resources>
+      <bt:Images>
+        <bt:Image id="icon16" DefaultValue="https://contentry.ai/icon-16.png" />
+        <bt:Image id="icon32" DefaultValue="https://contentry.ai/icon-32.png" />
+        <bt:Image id="icon80" DefaultValue="https://contentry.ai/icon-80.png" />
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="functionFile" DefaultValue="https://localhost:3002/" />
+        <bt:Url id="taskPaneUrl" DefaultValue="https://localhost:3002/" />
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="groupLabel" DefaultValue="Contentry.ai" />
+        <bt:String id="taskPaneButtonLabel" DefaultValue="Analyze Email" />
+        <bt:String id="taskPaneButtonTitle" DefaultValue="Analyze Email with Contentry.ai" />
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="taskPaneButtonDescription" DefaultValue="Opens the Contentry.ai panel to analyze your email for compliance, cultural sensitivity, and accuracy." />
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+</OfficeApp>

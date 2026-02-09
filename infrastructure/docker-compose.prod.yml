@@ -1,0 +1,272 @@
+version: '3.8'
+
+# =============================================================================
+# PRODUCTION DOCKER COMPOSE FOR 100K+ USERS
+# =============================================================================
+# 
+# This configuration provides:
+# - MongoDB replica set (3 nodes)
+# - Redis cluster for caching
+# - Multiple API workers behind nginx
+# - Celery workers for background jobs
+#
+# Estimated capacity: 50,000-100,000 concurrent users
+# =============================================================================
+
+services:
+  # ===========================================================================
+  # LOAD BALANCER
+  # ===========================================================================
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - api-1
+      - api-2
+      - api-3
+      - api-4
+    networks:
+      - contentry-net
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 512M
+
+  # ===========================================================================
+  # API SERVERS (4 instances for horizontal scaling)
+  # ===========================================================================
+  api-1:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
+    environment:
+      - MONGO_URL=mongodb://mongo-primary:27017,mongo-secondary-1:27017,mongo-secondary-2:27017/contentry_db?replicaSet=rs0
+      - REDIS_URL=redis://redis:6379
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - WORKER_ID=1
+    depends_on:
+      - mongo-primary
+      - redis
+    networks:
+      - contentry-net
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 2G
+      restart_policy:
+        condition: on-failure
+        max_attempts: 3
+
+  api-2:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
+    environment:
+      - MONGO_URL=mongodb://mongo-primary:27017,mongo-secondary-1:27017,mongo-secondary-2:27017/contentry_db?replicaSet=rs0
+      - REDIS_URL=redis://redis:6379
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - WORKER_ID=2
+    depends_on:
+      - mongo-primary
+      - redis
+    networks:
+      - contentry-net
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 2G
+
+  api-3:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
+    environment:
+      - MONGO_URL=mongodb://mongo-primary:27017,mongo-secondary-1:27017,mongo-secondary-2:27017/contentry_db?replicaSet=rs0
+      - REDIS_URL=redis://redis:6379
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - WORKER_ID=3
+    depends_on:
+      - mongo-primary
+      - redis
+    networks:
+      - contentry-net
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 2G
+
+  api-4:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
+    environment:
+      - MONGO_URL=mongodb://mongo-primary:27017,mongo-secondary-1:27017,mongo-secondary-2:27017/contentry_db?replicaSet=rs0
+      - REDIS_URL=redis://redis:6379
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - WORKER_ID=4
+    depends_on:
+      - mongo-primary
+      - redis
+    networks:
+      - contentry-net
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 2G
+
+  # ===========================================================================
+  # MONGODB REPLICA SET
+  # ===========================================================================
+  mongo-primary:
+    image: mongo:7
+    command: mongod --replSet rs0 --bind_ip_all
+    volumes:
+      - mongo-primary-data:/data/db
+    networks:
+      - contentry-net
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 4G
+
+  mongo-secondary-1:
+    image: mongo:7
+    command: mongod --replSet rs0 --bind_ip_all
+    volumes:
+      - mongo-secondary-1-data:/data/db
+    networks:
+      - contentry-net
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 4G
+
+  mongo-secondary-2:
+    image: mongo:7
+    command: mongod --replSet rs0 --bind_ip_all
+    volumes:
+      - mongo-secondary-2-data:/data/db
+    networks:
+      - contentry-net
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 4G
+
+  # ===========================================================================
+  # REDIS (Caching + Celery Broker)
+  # ===========================================================================
+  redis:
+    image: redis:7-alpine
+    command: redis-server --appendonly yes --maxmemory 1gb --maxmemory-policy allkeys-lru
+    volumes:
+      - redis-data:/data
+    networks:
+      - contentry-net
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1G
+
+  # ===========================================================================
+  # CELERY WORKERS (Background Jobs)
+  # ===========================================================================
+  celery-worker-1:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile.celery
+    command: celery -A tasks.celery_app worker --loglevel=info --concurrency=4
+    environment:
+      - MONGO_URL=mongodb://mongo-primary:27017,mongo-secondary-1:27017,mongo-secondary-2:27017/contentry_db?replicaSet=rs0
+      - REDIS_URL=redis://redis:6379
+      - CELERY_BROKER_URL=redis://redis:6379/0
+    depends_on:
+      - redis
+      - mongo-primary
+    networks:
+      - contentry-net
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 2G
+
+  celery-worker-2:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile.celery
+    command: celery -A tasks.celery_app worker --loglevel=info --concurrency=4
+    environment:
+      - MONGO_URL=mongodb://mongo-primary:27017,mongo-secondary-1:27017,mongo-secondary-2:27017/contentry_db?replicaSet=rs0
+      - REDIS_URL=redis://redis:6379
+      - CELERY_BROKER_URL=redis://redis:6379/0
+    depends_on:
+      - redis
+      - mongo-primary
+    networks:
+      - contentry-net
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 2G
+
+  celery-beat:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile.celery
+    command: celery -A tasks.celery_app beat --loglevel=info
+    environment:
+      - MONGO_URL=mongodb://mongo-primary:27017,mongo-secondary-1:27017,mongo-secondary-2:27017/contentry_db?replicaSet=rs0
+      - REDIS_URL=redis://redis:6379
+      - CELERY_BROKER_URL=redis://redis:6379/0
+    depends_on:
+      - redis
+    networks:
+      - contentry-net
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+
+  # ===========================================================================
+  # FRONTEND
+  # ===========================================================================
+  frontend:
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile
+    environment:
+      - NEXT_PUBLIC_API_URL=http://nginx/api
+    networks:
+      - contentry-net
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1G
+
+networks:
+  contentry-net:
+    driver: bridge
+
+volumes:
+  mongo-primary-data:
+  mongo-secondary-1-data:
+  mongo-secondary-2-data:
+  redis-data:

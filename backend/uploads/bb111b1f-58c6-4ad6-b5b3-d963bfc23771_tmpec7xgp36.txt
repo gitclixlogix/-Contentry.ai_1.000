@@ -1,0 +1,8 @@
+This is a test policy document for Contentry app testing.
+
+Policy Document Content:
+- Content moderation guidelines
+- Brand compliance rules
+- User safety protocols
+
+This document is created for testing the document upload functionality in the Settings page.

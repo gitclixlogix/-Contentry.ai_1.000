@@ -1,0 +1,31 @@
+{
+  "database": "contentry",
+  "exported_at": "2025-12-15T12:05:07.842247",
+  "collections": [
+    {
+      "name": "changelog",
+      "file": "changelog.json"
+    },
+    {
+      "name": "content_analyses",
+      "file": "content_analyses.json"
+    },
+    {
+      "name": "documentation_changelog",
+      "file": "documentation_changelog.json"
+    },
+    {
+      "name": "phone_otps",
+      "file": "phone_otps.json"
+    },
+    {
+      "name": "user_roles",
+      "file": "user_roles.json"
+    },
+    {
+      "name": "users",
+      "file": "users.json"
+    }
+  ],
+  "total_documents": 17
+}

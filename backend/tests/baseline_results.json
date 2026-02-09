@@ -1,0 +1,1083 @@
+{
+  "test_date": "2025-11-29T03:43:00.826036",
+  "backend_url": "https://admin-portal-278.preview.emergentagent.com/api",
+  "total_tests": 17,
+  "tests_passed": 16,
+  "success_rate": 94.11764705882352,
+  "test_results": {
+    "Authentication - Email Signup": {
+      "success": true,
+      "response": {
+        "message": "User created successfully",
+        "user_id": "30c2e3fe-2a20-4503-bcd1-fd62607c71c6"
+      },
+      "error": null
+    },
+    "Authentication - Email Login": {
+      "success": true,
+      "response": {
+        "message": "Login successful",
+        "user": {
+          "id": "ce874544-a9c7-47f1-b543-737a92eb3257",
+          "full_name": "Demo User",
+          "email": "demo@contentry.com",
+          "role": "user",
+          "enterprise_id": null,
+          "enterprise_role": null,
+          "email_verified": false
+        }
+      },
+      "error": null
+    },
+    "Authentication - Demo Admin Login": {
+      "success": true,
+      "response": {
+        "message": "Login successful",
+        "user": {
+          "id": "3c485828-3598-4d25-9ab1-ce9c9b5f10b6",
+          "full_name": "Demo Admin",
+          "email": "admin@contentry.com",
+          "role": "user",
+          "enterprise_id": null,
+          "enterprise_role": null,
+          "email_verified": false
+        }
+      },
+      "error": null
+    },
+    "Content Analysis - Text Analysis": {
+      "success": true,
+      "response": {
+        "flagged_status": "policy_violation",
+        "summary": "The post generates excitement about a product launch but violates marketing communication guidelines by failing to provide sufficient detail about the product's features and potential implications, which could mislead audiences.",
+        "issues": [
+          "Lack of specific product details and potential ramifications",
+          "Vague claims regarding revolutionizing the industry without substantiation"
+        ],
+        "policies_checked": [
+          "tmpec7xgp36.txt",
+          "tmpvblxkc62.pdf"
+        ],
+        "accuracy_analysis": {
+          "accuracy_score": 70,
+          "is_accurate": false,
+          "inaccuracies": [
+            "Claim of revolutionizing the industry is vague and unsubstantiated"
+          ],
+          "verified_facts": [],
+          "recommendations": "Include specific attributes of the product and its benefits to improve factual accuracy."
+        },
+        "compliance_analysis": {
+          "severity": "high",
+          "violation_type": "policy_breach",
+          "consequences": "warning",
+          "explanation": "The absence of detailed product information doesn't align with the user's marketing policies, which aim to prevent misleading communications."
+        },
+        "cultural_analysis": {
+          "overall_score": 85,
+          "summary": "The post carries a positive tone that may resonate well with individualistic cultures focused on innovation; however, its assertive claim could be challenging in cultures requiring more cautious communication.",
+          "dimensions": [
+            {
+              "dimension": "Authority & Hierarchy",
+              "score": 75,
+              "feedback": "The enthusiastic nature may not align with cultures that value modesty in business communications.",
+              "risk_regions": [
+                "East Asia",
+                "Latin America"
+              ],
+              "recommendations": "Consider a more restrained approach to communicate effectively."
+            },
+            {
+              "dimension": "Individual vs Community Focus",
+              "score": 90,
+              "feedback": "The excitement framed around individual achievement might resonate positively in individual-oriented cultures.",
+              "risk_regions": [
+                "United States",
+                "Australia"
+              ],
+              "recommendations": "Highlight potential community benefits of the product to appeal to community-oriented cultures."
+            },
+            {
+              "dimension": "Communication Style",
+              "score": 80,
+              "feedback": "The enthusiastic tone aligns well with direct communication styles but might be interpreted as excessive in indirect styles.",
+              "risk_regions": [
+                "Japan",
+                "UK"
+              ],
+              "recommendations": "Balance enthusiasm with a tempered approach for diverse audiences."
+            },
+            {
+              "dimension": "Risk & Change Tolerance",
+              "score": 65,
+              "feedback": "Bold claims about revolutionizing the industry may cause reservations in cultures less comfortable with risk.",
+              "risk_regions": [
+                "Germany",
+                "Switzerland"
+              ],
+              "recommendations": "Add supportive evidence to bolster claims."
+            },
+            {
+              "dimension": "Time Orientation",
+              "score": 80,
+              "feedback": "The focus on innovation aligns with short-term success but may clash with cultures valuing long-term stability.",
+              "risk_regions": [
+                "Middle East",
+                "Asia"
+              ],
+              "recommendations": "Emphasize both immediate and long-term benefits."
+            },
+            {
+              "dimension": "Expression & Emotion",
+              "score": 90,
+              "feedback": "The positive emotional tone fits well in cultures that embrace expressiveness.",
+              "risk_regions": [
+                "North America",
+                "Brazil"
+              ],
+              "recommendations": "Ensure to balance enthusiasm with professional integrity."
+            }
+          ]
+        },
+        "is_sponsored": false,
+        "analysis_duration_ms": 17366.38,
+        "llm_cost": 6.1e-05
+      },
+      "error": null
+    },
+    "Content Analysis - Content Rewrite": {
+      "success": true,
+      "response": {
+        "rewritten_content": "We are excited to introduce our latest product! We believe it brings exceptional value and innovation. Discover its impressive features and learn how it can enhance your experience."
+      },
+      "error": null
+    },
+    "Content Analysis - Content Generation": {
+      "success": true,
+      "response": {
+        "generated_content": "\ud83d\ude80 Exciting News! Today, I am thrilled to announce the launch of our latest product, [Product Name]! Tailored to meet the evolving needs of our customers, this innovative solution promises to deliver unparalleled performance and efficiency. \n\nJoin us on this journey as we redefine excellence in [industry/field]! Your feedback is invaluable, and we can\u2019t wait to hear what you think.\n\nExplore more about [Product Name] here: [link]\n\n#Innovation #ProductLaunch #Excellence #YourFeedbackMatters\n\nThank you for your continued support!",
+        "tone": "professional",
+        "job_title": "CEO"
+      },
+      "error": null
+    },
+    "Admin Analytics - Card Distribution": {
+      "success": true,
+      "response": {
+        "card_types": {
+          "visa": {
+            "count": 201,
+            "revenue": 18877.94,
+            "percentage": 45
+          },
+          "mastercard": {
+            "count": 126,
+            "revenue": 12080.58,
+            "percentage": 30
+          },
+          "amex": {
+            "count": 51,
+            "revenue": 9337.26,
+            "percentage": 15
+          },
+          "discover": {
+            "count": 35,
+            "revenue": 7205.01,
+            "percentage": 7
+          },
+          "other": {
+            "count": 10,
+            "revenue": 2296.88,
+            "percentage": 3
+          }
+        },
+        "total_transactions": 423,
+        "total_revenue": 49797.67,
+        "avg_transaction_value": {
+          "visa": 93.92,
+          "mastercard": 95.88,
+          "amex": 183.08,
+          "discover": 205.86,
+          "other": 229.69
+        },
+        "monthly_trends": {
+          "visa": {
+            "labels": [
+              "Jul",
+              "Aug",
+              "Aug",
+              "Sep",
+              "Oct",
+              "Nov"
+            ],
+            "data": [
+              39,
+              58,
+              57,
+              60,
+              59,
+              56
+            ]
+          },
+          "mastercard": {
+            "labels": [
+              "Jul",
+              "Aug",
+              "Aug",
+              "Sep",
+              "Oct",
+              "Nov"
+            ],
+            "data": [
+              39,
+              43,
+              41,
+              27,
+              54,
+              52
+            ]
+          },
+          "amex": {
+            "labels": [
+              "Jul",
+              "Aug",
+              "Aug",
+              "Sep",
+              "Oct",
+              "Nov"
+            ],
+            "data": [
+              33,
+              51,
+              60,
+              22,
+              43,
+              34
+            ]
+          },
+          "discover": {
+            "labels": [
+              "Jul",
+              "Aug",
+              "Aug",
+              "Sep",
+              "Oct",
+              "Nov"
+            ],
+            "data": [
+              37,
+              37,
+              41,
+              51,
+              53,
+              50
+            ]
+          },
+          "other": {
+            "labels": [
+              "Jul",
+              "Aug",
+              "Aug",
+              "Sep",
+              "Oct",
+              "Nov"
+            ],
+            "data": [
+              58,
+              21,
+              31,
+              49,
+              56,
+              54
+            ]
+          }
+        },
+        "top_card": "visa",
+        "is_mock_data": true
+      },
+      "error": null
+    },
+    "Admin Analytics - Payments": {
+      "success": true,
+      "response": {
+        "revenue_over_time": {
+          "labels": [
+            "Jan 2025",
+            "Feb 2025",
+            "Mar 2025",
+            "Apr 2025",
+            "May 2025",
+            "Jun 2025",
+            "Jul 2025",
+            "Aug 2025",
+            "Aug 2025",
+            "Sep 2025",
+            "Oct 2025",
+            "Nov 2025"
+          ],
+          "data": [
+            13619.83,
+            14524.55,
+            5178.05,
+            6515.76,
+            14738.01,
+            13238.87,
+            10837.44,
+            12198.04,
+            11358.93,
+            13640.88,
+            8312.51,
+            11674.16
+          ]
+        },
+        "total_revenue": 135837.03,
+        "avg_monthly_revenue": 11319.75,
+        "growth_rate": 40.44,
+        "payment_methods": {
+          "card": 65,
+          "bank_transfer": 25,
+          "paypal": 10
+        },
+        "subscription_revenue": {
+          "free": 0,
+          "basic": 40751.109,
+          "advance": 61126.6635,
+          "pro": 33959.2575
+        },
+        "is_mock_data": true
+      },
+      "error": null
+    },
+    "Admin Analytics - Users by Country": {
+      "success": true,
+      "response": {
+        "countries": [
+          "United States",
+          "United Kingdom",
+          "Canada",
+          "Germany",
+          "Australia",
+          "France",
+          "India",
+          "Brazil",
+          "Japan",
+          "Spain"
+        ],
+        "user_counts": [
+          450,
+          320,
+          280,
+          240,
+          210,
+          180,
+          150,
+          130,
+          110,
+          90
+        ],
+        "country_details": {
+          "United States": {
+            "total": 450,
+            "male": 240,
+            "female": 195,
+            "other": 15
+          },
+          "United Kingdom": {
+            "total": 320,
+            "male": 170,
+            "female": 140,
+            "other": 10
+          },
+          "Canada": {
+            "total": 280,
+            "male": 145,
+            "female": 125,
+            "other": 10
+          },
+          "Germany": {
+            "total": 240,
+            "male": 125,
+            "female": 108,
+            "other": 7
+          },
+          "Australia": {
+            "total": 210,
+            "male": 110,
+            "female": 95,
+            "other": 5
+          },
+          "France": {
+            "total": 180,
+            "male": 92,
+            "female": 82,
+            "other": 6
+          },
+          "India": {
+            "total": 150,
+            "male": 85,
+            "female": 60,
+            "other": 5
+          },
+          "Brazil": {
+            "total": 130,
+            "male": 68,
+            "female": 58,
+            "other": 4
+          },
+          "Japan": {
+            "total": 110,
+            "male": 55,
+            "female": 52,
+            "other": 3
+          },
+          "Spain": {
+            "total": 90,
+            "male": 45,
+            "female": 42,
+            "other": 3
+          }
+        },
+        "is_mock_data": true
+      },
+      "error": null
+    },
+    "Admin Analytics - Stats": {
+      "success": true,
+      "response": {
+        "total_users": 29,
+        "total_posts": 64,
+        "total_policies": 2,
+        "total_notifications": 33,
+        "total_feedback": 2,
+        "flagged_stats": {
+          "good_coverage": 38,
+          "rude_and_abusive": 1,
+          "contain_harassment": 0,
+          "policy_violation": 17,
+          "pending": 0
+        },
+        "recent_posts": [
+          {
+            "id": "ab80d130-300a-4b8c-9904-47d8c9a79464",
+            "user_id": "demo-user",
+            "title": "Baseline Test Post",
+            "content": "This is a baseline test post created during pre-refactoring testing to ensure post creation functionality works correctly.",
+            "media_url": null,
+            "platforms": [
+              "facebook",
+              "twitter"
+            ],
+            "status": "draft",
+            "flagged_status": "none",
+            "moderation_summary": "The post is compliant with the policy documents, does not contain inappropriate content, and aligns with professional and cultural standards. It is a straightforward message stating its purpose for internal testing.",
+            "post_time": null,
+            "social_media_post_ids": {},
+            "source": "contentry",
+            "original_platform": null,
+            "engagement_metrics": {},
+            "last_analyzed": null,
+            "analysis_duration_ms": null,
+            "llm_cost": null,
+            "cultural_sensitivity_score": 90.0,
+            "compliance_score": 90.0,
+            "overall_score": 93.0,
+            "violation_severity": "none",
+            "violation_type": "none",
+            "potential_consequences": "none",
+            "created_at": "2025-11-29T03:11:34.388759+00:00"
+          },
+          {
+            "id": "8a4a4dcc-1913-4b07-bbdb-32bd84873d62",
+            "user_id": "demo-user",
+            "title": "Baseline Test Post",
+            "content": "This is a baseline test post created during pre-refactoring testing to ensure post creation functionality works correctly.",
+            "media_url": null,
+            "platforms": [
+              "facebook",
+              "twitter"
+            ],
+            "status": "draft",
+            "flagged_status": "none",
+            "moderation_summary": "The analyzed post is a simple test message stating its purpose, which is not inappropriate or abusive. It aligns with general compliance and brand communication expectations, considering it does not share proprietary information or violate any policies.",
+            "post_time": null,
+            "social_media_post_ids": {},
+            "source": "contentry",
+            "original_platform": null,
+            "engagement_metrics": {},
+            "last_analyzed": null,
+            "analysis_duration_ms": null,
+            "llm_cost": null,
+            "cultural_sensitivity_score": 85.0,
+            "compliance_score": 90.0,
+            "overall_score": 91.5,
+            "violation_severity": "none",
+            "violation_type": "none",
+            "potential_consequences": "none",
+            "created_at": "2025-11-29T03:09:39.621967+00:00"
+          },
+          {
+            "id": "ca6a3b8a-7e54-4098-9a14-1ab36f883493",
+            "user_id": "demo-user",
+            "title": "Baseline Test Post",
+            "content": "This is a baseline test post created during pre-refactoring testing to ensure post creation functionality works correctly.",
+            "media_url": null,
+            "platforms": [
+              "facebook",
+              "twitter"
+            ],
+            "status": "draft",
+            "flagged_status": "good_coverage",
+            "moderation_summary": "The analyzed post shows compliance with custom policy documents and brand guidelines. It does not contain inappropriate content or misinformation. However, the post could benefit from more specific details regarding the product launch to enhance engagement and transparency.",
+            "post_time": null,
+            "social_media_post_ids": {},
+            "source": "contentry",
+            "original_platform": null,
+            "engagement_metrics": {},
+            "last_analyzed": null,
+            "analysis_duration_ms": null,
+            "llm_cost": null,
+            "cultural_sensitivity_score": 80.0,
+            "compliance_score": 70.0,
+            "overall_score": 77.5,
+            "violation_severity": "moderate",
+            "violation_type": "none",
+            "potential_consequences": "none",
+            "created_at": "2025-11-29T03:08:02.944390+00:00"
+          },
+          {
+            "id": "d9522e0c-a1d6-4380-b9dc-41075a40a718",
+            "user_id": "demo-user",
+            "title": "You sick...",
+            "content": "You sick",
+            "media_url": null,
+            "platforms": [],
+            "status": "draft",
+            "flagged_status": "rude_and_abusive",
+            "moderation_summary": "The post 'You sick' contains language that can be interpreted as offensive and is not in line with professional communication standards. It reflects a rude tone that can potentially be considered as harassment, which violates brand guidelines for respectful engagement.",
+            "post_time": null,
+            "social_media_post_ids": {},
+            "source": "contentry",
+            "original_platform": null,
+            "engagement_metrics": {},
+            "last_analyzed": null,
+            "analysis_duration_ms": null,
+            "llm_cost": null,
+            "cultural_sensitivity_score": 30.0,
+            "compliance_score": 70.0,
+            "overall_score": 67.0,
+            "violation_severity": "moderate",
+            "violation_type": "tone_issue",
+            "potential_consequences": "verbal warning",
+            "created_at": "2025-11-27T20:57:11.929398+00:00"
+          },
+          {
+            "id": "30c256a9-6a67-4831-99f2-bc7a33b78b88",
+            "user_id": "demo-user",
+            "title": "Test Post for Management",
+            "content": "This is a comprehensive test post for posts management testing.",
+            "media_url": null,
+            "platforms": [
+              "facebook",
+              "twitter",
+              "linkedin"
+            ],
+            "status": "draft",
+            "flagged_status": "policy_violation",
+            "moderation_summary": "The post demonstrates potential violations of company policy regarding tone and communication style, particularly in relation to cultural sensitivity and brand voice. It does not align with the inclusive approach advocated in the user\u2019s policy documents.",
+            "post_time": null,
+            "social_media_post_ids": {},
+            "source": "contentry",
+            "original_platform": null,
+            "engagement_metrics": {},
+            "last_analyzed": null,
+            "analysis_duration_ms": null,
+            "llm_cost": null,
+            "cultural_sensitivity_score": 65.0,
+            "compliance_score": 50.0,
+            "overall_score": 60.5,
+            "violation_severity": "high",
+            "violation_type": "tone_issue",
+            "potential_consequences": "warning",
+            "created_at": "2025-11-27T19:44:56.784940+00:00"
+          }
+        ],
+        "recent_users": [
+          {
+            "id": "30c2e3fe-2a20-4503-bcd1-fd62607c71c6",
+            "full_name": "Baseline Test User 034238",
+            "email": "baseline_test_034238@contentry.com",
+            "phone": "+1234567890",
+            "dob": "1990-01-01",
+            "company_name": null,
+            "job_title": null,
+            "country": null,
+            "role": "user",
+            "default_tone": "professional",
+            "social_connections": {},
+            "enterprise_id": null,
+            "enterprise_role": null,
+            "email_verified": false,
+            "verification_token": null,
+            "created_at": "2025-11-29T03:42:38.621880+00:00"
+          },
+          {
+            "id": "3e3e393f-f61f-4095-811a-a2e747b20eaa",
+            "full_name": "Baseline Test User 031653",
+            "email": "baseline_test_031653@contentry.com",
+            "phone": "+1234567890",
+            "dob": "1990-01-01",
+            "company_name": null,
+            "job_title": null,
+            "country": null,
+            "role": "user",
+            "default_tone": "professional",
+            "social_connections": {},
+            "enterprise_id": null,
+            "enterprise_role": null,
+            "email_verified": false,
+            "verification_token": null,
+            "created_at": "2025-11-29T03:16:53.326721+00:00"
+          },
+          {
+            "id": "c408d5b7-a921-4677-9a78-91aad37dcb7e",
+            "full_name": "Baseline Test User 031016",
+            "email": "baseline_test_031016@contentry.com",
+            "phone": "+1234567890",
+            "dob": "1990-01-01",
+            "company_name": null,
+            "job_title": null,
+            "country": null,
+            "role": "user",
+            "default_tone": "professional",
+            "social_connections": {},
+            "enterprise_id": null,
+            "enterprise_role": null,
+            "email_verified": false,
+            "verification_token": null,
+            "created_at": "2025-11-29T03:10:16.835854+00:00"
+          },
+          {
+            "id": "d223bc42-a8de-4874-b6be-2d516d74a87a",
+            "full_name": "Baseline Test User 030856",
+            "email": "baseline_test_030856@contentry.com",
+            "phone": "+1234567890",
+            "dob": "1990-01-01",
+            "company_name": null,
+            "job_title": null,
+            "country": null,
+            "role": "user",
+            "default_tone": "professional",
+            "social_connections": {},
+            "enterprise_id": null,
+            "enterprise_role": null,
+            "email_verified": false,
+            "verification_token": null,
+            "created_at": "2025-11-29T03:08:56.566842+00:00"
+          },
+          {
+            "id": "268ca6a0-6f22-4e7e-8cc7-f9b4691a0917",
+            "full_name": "Baseline Test User 030703",
+            "email": "baseline_test_030703@contentry.com",
+            "phone": "+1234567890",
+            "dob": "1990-01-01",
+            "company_name": null,
+            "job_title": null,
+            "country": null,
+            "role": "user",
+            "default_tone": "professional",
+            "social_connections": {},
+            "enterprise_id": null,
+            "enterprise_role": null,
+            "email_verified": false,
+            "verification_token": null,
+            "created_at": "2025-11-29T03:07:04.233852+00:00"
+          }
+        ]
+      },
+      "error": null
+    },
+    "Posts - Create Post": {
+      "success": false,
+      "response": "Expected 200, got 500: Internal Server Error",
+      "error": "Failed to create post or missing post ID"
+    },
+    "Posts - List Posts": {
+      "success": true,
+      "response": {
+        "posts_count": 18
+      },
+      "error": null
+    },
+    "Posts - Get Specific Post": {
+      "success": true,
+      "response": {
+        "id": "24eb97ed-de8b-4288-8d5b-8faee6a42afd",
+        "user_id": "demo-user",
+        "title": "Testing the post creation feature to ensure it app",
+        "content": "Testing the post creation feature to ensure it appears in Post Listing!",
+        "media_url": null,
+        "platforms": [
+          "facebook"
+        ],
+        "status": "draft",
+        "flagged_status": "good_coverage",
+        "moderation_summary": "The post adheres to the user's custom policy documents, as it does not contain any violations of confidentiality, brand guidelines, or inappropriate content. The content was checked against general social media policies and found to be compliant.",
+        "post_time": null,
+        "created_at": "2025-11-25T15:15:52.506699+00:00",
+        "last_analyzed": "2025-11-26T16:05:22.205981+00:00",
+        "cultural_sensitivity_score": 90.0,
+        "compliance_score": 90.0,
+        "overall_score": 90.0,
+        "potential_consequences": "none",
+        "violation_severity": "none",
+        "violation_type": "none"
+      },
+      "error": null
+    },
+    "Subscriptions - Get Plans": {
+      "success": true,
+      "response": [
+        {
+          "id": "free",
+          "name": "Free",
+          "price": 39.0,
+          "credits": 100000,
+          "features": [
+            "Basic features",
+            "Limited posts"
+          ]
+        },
+        {
+          "id": "basic",
+          "name": "Basic",
+          "price": 46.0,
+          "credits": 250000,
+          "features": [
+            "Essential features",
+            "More posts"
+          ]
+        },
+        {
+          "id": "advance",
+          "name": "Advance",
+          "price": 55.0,
+          "credits": 500000,
+          "features": [
+            "Advanced features",
+            "Unlimited posts"
+          ]
+        },
+        {
+          "id": "pro",
+          "name": "Pro",
+          "price": 68.0,
+          "credits": 1000000,
+          "features": [
+            "Custom solutions",
+            "Priority support"
+          ]
+        }
+      ],
+      "error": null
+    },
+    "User Analytics - Reputation Score": {
+      "success": true,
+      "response": {
+        "reputation_score": 59.8,
+        "cultural_sensitivity_score": 60.8,
+        "compliance_score": 57.8,
+        "total_analyzed_posts": 18,
+        "risk_level": "HIGH RISK",
+        "risk_color": "red",
+        "risk_description": "Critical: Policy violations or severe compliance issues detected.",
+        "flagged_posts": 10,
+        "flagged_percentage": 55.6,
+        "score_breakdown": {
+          "very_poor": 5,
+          "poor": 2,
+          "average": 4,
+          "good": 2,
+          "excellent": 5
+        }
+      },
+      "error": null
+    },
+    "User Management - Notifications": {
+      "success": true,
+      "response": [
+        {
+          "id": "70507249-e2b6-4288-8352-e80a3ff93fef",
+          "user_id": "demo-user",
+          "type": "alert",
+          "message": "Your post 'Baseline Test Post' has been analyzed. Status: none",
+          "read": false,
+          "created_at": "2025-11-29T03:11:34.389154+00:00"
+        },
+        {
+          "id": "74e9f3af-eecf-4611-830c-722f27e7fb52",
+          "user_id": "demo-user",
+          "type": "alert",
+          "message": "Your post 'Baseline Test Post' has been analyzed. Status: none",
+          "read": false,
+          "created_at": "2025-11-29T03:09:39.622571+00:00"
+        },
+        {
+          "id": "36aff815-2ff3-437f-8562-3425e0a9ed82",
+          "user_id": "demo-user",
+          "type": "alert",
+          "message": "Your post 'Baseline Test Post' has been analyzed. Status: good_coverage",
+          "read": false,
+          "created_at": "2025-11-29T03:08:02.946928+00:00"
+        },
+        {
+          "id": "1ee26363-bcc2-43b2-9998-42d78825d406",
+          "user_id": "demo-user",
+          "type": "alert",
+          "message": "Your scheduled post 'Scheduled Test Post' has been published!",
+          "read": false,
+          "created_at": "2025-11-27T21:39:02.957801+00:00"
+        },
+        {
+          "id": "03dc3e98-6c5f-44b3-950a-2fb7289c1d65",
+          "user_id": "demo-user",
+          "type": "alert",
+          "message": "Your post 'You sick...' has been analyzed. Status: rude_and_abusive",
+          "read": false,
+          "created_at": "2025-11-27T20:57:26.829602+00:00"
+        },
+        {
+          "id": "a6582753-1fdd-4dbb-8793-21c378a13e79",
+          "user_id": "demo-user",
+          "type": "alert",
+          "message": "Your post 'Test Post for Management' has been analyzed. Status: policy_violation",
+          "read": false,
+          "created_at": "2025-11-27T19:44:56.785486+00:00"
+        },
+        {
+          "id": "44cd6337-c831-44d3-b28e-b318a2c9f3be",
+          "user_id": "demo-user",
+          "type": "alert",
+          "message": "Your post 'Scheduled Test Post' has been scheduled for 2025-11-27T21:38:30.949844. Status: policy_violation",
+          "read": false,
+          "created_at": "2025-11-27T19:38:45.158735+00:00"
+        },
+        {
+          "id": "fdd968ce-7fab-49d2-91a2-76b90e1338ad",
+          "user_id": "demo-user",
+          "type": "alert",
+          "message": "Your post 'Updated Test Post' has been updated and re-analyzed. Status: policy_violation",
+          "read": false,
+          "created_at": "2025-11-27T19:38:30.903933+00:00"
+        },
+        {
+          "id": "16213793-6fb5-4266-acdf-4c1e079ad0cd",
+          "user_id": "demo-user",
+          "type": "alert",
+          "message": "Your post 'Test Post for Management' has been analyzed. Status: policy_violation",
+          "read": false,
+          "created_at": "2025-11-27T19:38:13.876695+00:00"
+        },
+        {
+          "id": "e32aa492-876f-4ab9-b45e-74184e8f8dbd",
+          "user_id": "demo-user",
+          "type": "alert",
+          "message": "Your post 'Test Post' has been analyzed. Status: policy_violation",
+          "read": false,
+          "created_at": "2025-11-26T19:37:13.825239+00:00"
+        },
+        {
+          "id": "bd450b7d-0236-427b-9437-0448b576264b",
+          "user_id": "demo-user",
+          "type": "alert",
+          "message": "Reanalyzed 11 posts. 4 posts had status changes.",
+          "read": false,
+          "created_at": "2025-11-26T16:08:31.189506+00:00"
+        },
+        {
+          "id": "44d01619-f20f-4aa6-b4d9-c089dafb056e",
+          "user_id": "demo-user",
+          "type": "alert",
+          "message": "Your post 'Confidential Leak' has been analyzed. Status: policy_violation",
+          "read": false,
+          "created_at": "2025-11-26T15:52:07.858287+00:00"
+        },
+        {
+          "id": "1cead24a-99e7-4afc-8930-532f25a1a006",
+          "user_id": "demo-user",
+          "type": "alert",
+          "message": "Your post 'Company Update' has been analyzed. Status: good_coverage",
+          "read": false,
+          "created_at": "2025-11-26T15:51:42.926404+00:00"
+        },
+        {
+          "id": "b6532f7b-4f30-41a5-b22f-af432e2aab59",
+          "user_id": "demo-user",
+          "type": "alert",
+          "message": "Your post 'Test Severity Detection' has been analyzed. Status: policy_violation",
+          "read": false,
+          "created_at": "2025-11-26T15:48:36.910750+00:00"
+        },
+        {
+          "id": "b71f86fa-48e1-482e-a38e-8ccb365833fb",
+          "user_id": "demo-user",
+          "type": "alert",
+          "message": "Your post 'Policy Violation Test' has been analyzed. Status: policy_violation",
+          "read": false,
+          "created_at": "2025-11-26T15:31:34.587625+00:00"
+        },
+        {
+          "id": "13f4f872-3cd9-480d-b658-710b7684d173",
+          "user_id": "demo-user",
+          "type": "alert",
+          "message": "Your post 'Test Overall Score' has been analyzed. Status: good_coverage",
+          "read": false,
+          "created_at": "2025-11-26T15:31:14.306681+00:00"
+        },
+        {
+          "id": "97d0261b-9012-4281-be3e-f7b019a86ebf",
+          "user_id": "demo-user",
+          "type": "alert",
+          "message": "Reanalyzed 6 posts. 2 posts had status changes.",
+          "read": false,
+          "created_at": "2025-11-26T15:25:23.797149+00:00"
+        },
+        {
+          "id": "176619b5-5abf-4420-a3ac-3c407982a918",
+          "user_id": "demo-user",
+          "type": "alert",
+          "message": "Reanalyzed 6 posts. 2 posts had status changes.",
+          "read": false,
+          "created_at": "2025-11-26T15:24:17.792291+00:00"
+        },
+        {
+          "id": "b6f2caf2-3156-4b68-a335-f25db3cf841c",
+          "user_id": "demo-user",
+          "type": "alert",
+          "message": "Post 'Testing the post creation feature to ensure it app' was reanalyzed. Status changed from good_coverage to policy_violation.",
+          "read": false,
+          "created_at": "2025-11-26T15:07:19.157765+00:00"
+        },
+        {
+          "id": "c01afb92-28ab-4587-bf10-3575307a11f1",
+          "user_id": "demo-user",
+          "type": "alert",
+          "message": "Reanalyzed 6 posts. 3 posts had status changes.",
+          "read": false,
+          "created_at": "2025-11-26T15:03:05.751671+00:00"
+        },
+        {
+          "id": "65f33cf8-4e45-4764-8c64-9debfde8986e",
+          "user_id": "demo-user",
+          "type": "alert",
+          "message": "Your scheduled post 'Test Scheduled Post' has been published!",
+          "read": false,
+          "created_at": "2025-11-26T14:30:12.754318+00:00"
+        },
+        {
+          "id": "7236c407-7989-42a0-865f-680481acf5e6",
+          "user_id": "demo-user",
+          "type": "alert",
+          "message": "Your post 'You suck...' has been analyzed. Status: rude_and_abusive|policy_violation",
+          "read": false,
+          "created_at": "2025-11-26T13:40:00.219979+00:00"
+        },
+        {
+          "id": "7eb5ebc9-5b6d-4e71-931f-dc34dd2c5738",
+          "user_id": "demo-user",
+          "type": "alert",
+          "message": "Your scheduled post 'Scheduler Test Post' has been published!",
+          "read": false,
+          "created_at": "2025-11-26T00:48:54.346613+00:00"
+        },
+        {
+          "id": "daf8e1f6-af02-4bbe-8f8b-f414c1d2769b",
+          "user_id": "demo-user",
+          "type": "alert",
+          "message": "Your post 'Scheduler Test Post' has been scheduled for 2025-11-26T00:45:00. Status: good_coverage",
+          "read": false,
+          "created_at": "2025-11-26T00:48:46.646317+00:00"
+        },
+        {
+          "id": "ea2673b4-a048-40c0-9822-5e4eb02d877f",
+          "user_id": "demo-user",
+          "type": "alert",
+          "message": "Payment successful! Your Basic Plan subscription is now active.",
+          "read": false,
+          "created_at": "2025-11-25T20:30:35.775553+00:00"
+        },
+        {
+          "id": "2ae4e3ac-484c-4f34-9f15-e8e7fc88b461",
+          "user_id": "demo-user",
+          "type": "alert",
+          "message": "Your post 'Test Scheduled Post' has been scheduled for 2025-11-26T14:30:00. Status: good_coverage",
+          "read": false,
+          "created_at": "2025-11-25T20:09:57.205293+00:00"
+        },
+        {
+          "id": "8e59aced-79cb-47a6-b513-e27d316ce5d8",
+          "user_id": "demo-user",
+          "type": "alert",
+          "message": "Your post 'Testing the post creation feature to ensure it app' has been analyzed. Status: good_coverage",
+          "read": false,
+          "created_at": "2025-11-25T15:15:52.507076+00:00"
+        },
+        {
+          "id": "eb061cce-944d-4cbf-8815-12cb25e49e0a",
+          "user_id": "demo-user",
+          "type": "alert",
+          "message": "Your post 'Test Post' has been analyzed. Status: good_coverage",
+          "read": false,
+          "created_at": "2025-11-25T14:41:27.915887+00:00"
+        },
+        {
+          "id": "44c5ce05-0e24-4bcd-925d-fd5242f74a3f",
+          "user_id": "demo-user",
+          "type": "alert",
+          "message": "Your post 'Test Post' has been analyzed. Status: good_coverage",
+          "read": false,
+          "created_at": "2025-11-25T14:41:07.724619+00:00"
+        },
+        {
+          "id": "4565dde9-f9e3-4080-bd9a-a9abad4a651f",
+          "user_id": "demo-user",
+          "type": "alert",
+          "message": "Your post 'Test Post' has been analyzed. Status: good_coverage",
+          "read": false,
+          "created_at": "2025-11-25T14:40:29.868000+00:00"
+        }
+      ],
+      "error": null
+    },
+    "Policy Management - List Policies": {
+      "success": true,
+      "response": [
+        {
+          "id": "cfe48808-455b-4218-b6d8-f768d3a5eec5",
+          "user_id": "demo-user",
+          "filename": "tmpec7xgp36.txt",
+          "file_path": "/app/backend/uploads/bb111b1f-58c6-4ad6-b5b3-d963bfc23771_tmpec7xgp36.txt",
+          "file_type": "text/plain",
+          "file_size": 258,
+          "uploaded_at": "2025-11-25T19:45:52.928223+00:00"
+        },
+        {
+          "id": "5d69810a-1a8d-4d70-a61c-c00400479ba3",
+          "user_id": "demo-user",
+          "filename": "tmpvblxkc62.pdf",
+          "file_path": "/app/backend/uploads/5f388812-9182-4283-a2e6-b5148cb19ba3_tmpvblxkc62.pdf",
+          "file_type": "application/pdf",
+          "file_size": 308,
+          "uploaded_at": "2025-11-25T19:52:00.781602+00:00"
+        }
+      ],
+      "error": null
+    }
+  },
+  "failed_tests": [
+    {
+      "test": "Posts - Create Post",
+      "error": "Failed to create post or missing post ID",
+      "response": "Expected 200, got 500: Internal Server Error"
+    }
+  ]
+}

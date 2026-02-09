@@ -1,0 +1,201 @@
+{
+  "test_date": "2026-01-11T08:47:45.496488",
+  "tests": {
+    "api_response_times": {
+      "/api/v1/credits/costs": {
+        "avg_ms": 1.48,
+        "p95_ms": 1.74,
+        "p99_ms": 4.67,
+        "max_ms": 4.67,
+        "errors": 0,
+        "requests": 50
+      },
+      "/api/v1/credits/plans": {
+        "avg_ms": 1.42,
+        "p95_ms": 1.54,
+        "p99_ms": 2.52,
+        "max_ms": 2.52,
+        "errors": 0,
+        "requests": 50
+      },
+      "/api/health": {
+        "avg_ms": 1.21,
+        "p95_ms": 1.37,
+        "p99_ms": 2.27,
+        "max_ms": 2.27,
+        "errors": 0,
+        "requests": 50
+      }
+    },
+    "concurrent_users": {
+      "concurrent_10": {
+        "requests": 20,
+        "successes": 20,
+        "success_rate": 100.0,
+        "requests_per_second": 703.4,
+        "avg_latency_ms": 14.0,
+        "total_time_s": 0.03
+      },
+      "concurrent_50": {
+        "requests": 100,
+        "successes": 100,
+        "success_rate": 100.0,
+        "requests_per_second": 607.0,
+        "avg_latency_ms": 77.9,
+        "total_time_s": 0.16
+      },
+      "concurrent_100": {
+        "requests": 200,
+        "successes": 200,
+        "success_rate": 100.0,
+        "requests_per_second": 456.7,
+        "avg_latency_ms": 217.1,
+        "total_time_s": 0.44
+      },
+      "concurrent_200": {
+        "requests": 400,
+        "successes": 400,
+        "success_rate": 100.0,
+        "requests_per_second": 427.8,
+        "avg_latency_ms": 424.8,
+        "total_time_s": 0.94
+      },
+      "concurrent_500": {
+        "requests": 1000,
+        "successes": 1000,
+        "success_rate": 100.0,
+        "requests_per_second": 415.6,
+        "avg_latency_ms": 944.8,
+        "total_time_s": 2.41
+      }
+    },
+    "database_performance": {
+      "collection_users": {
+        "documents": 98,
+        "size_mb": 0.07,
+        "index_size_mb": 0.09
+      },
+      "collection_enterprises": {
+        "documents": 12,
+        "size_mb": 0.0,
+        "index_size_mb": 0.04
+      },
+      "collection_posts": {
+        "documents": 148,
+        "size_mb": 1.93,
+        "index_size_mb": 0.18
+      },
+      "collection_content_analyses": {
+        "documents": 678,
+        "size_mb": 4.21,
+        "index_size_mb": 0.17
+      },
+      "collection_credit_transactions": {
+        "documents": 35,
+        "size_mb": 0.01,
+        "index_size_mb": 0.07
+      },
+      "query_users": {
+        "avg_ms": 0.16,
+        "p95_ms": 0.25
+      },
+      "query_enterprises": {
+        "avg_ms": 0.14,
+        "p95_ms": 0.21
+      },
+      "query_posts": {
+        "avg_ms": 0.19,
+        "p95_ms": 0.25
+      }
+    },
+    "resource_usage": {
+      "system_memory": {
+        "total_gb": 31.3,
+        "available_gb": 11.28,
+        "used_percent": 63.9
+      },
+      "cpu": {
+        "cores": 8,
+        "usage_percent": 4.7
+      },
+      "disk": {
+        "total_gb": 106.99,
+        "free_gb": 83.59,
+        "used_percent": 21.9
+      }
+    },
+    "connection_pool": {
+      "connections_50": {
+        "creation_time_s": 0.0,
+        "success_rate": 100.0
+      },
+      "connections_100": {
+        "creation_time_s": 0.001,
+        "success_rate": 100.0
+      },
+      "connections_200": {
+        "creation_time_s": 0.001,
+        "success_rate": 100.0
+      }
+    },
+    "auth_throughput": {
+      "concurrent_login": {
+        "concurrent": 20,
+        "successes": 0,
+        "logins_per_second": 430.2,
+        "total_time_s": 0.05
+      }
+    },
+    "architecture_analysis": {
+      "current_architecture": {
+        "database": "MongoDB (single instance)",
+        "app_server": "Single Uvicorn process",
+        "caching": "None",
+        "background_jobs": "APScheduler (in-process)",
+        "rate_limiting": "Basic/In-memory",
+        "sessions": "JWT (stateless)",
+        "file_storage": "Local filesystem"
+      },
+      "scalability_gaps": [
+        "MongoDB: Single instance, no replication",
+        "App Server: Single process, single machine",
+        "Caching: No Redis/Memcached",
+        "Background Jobs: In-process scheduler",
+        "Rate Limiting: In-memory, not distributed",
+        "File Storage: Local filesystem"
+      ],
+      "required_changes": [
+        "Deploy MongoDB replica set (minimum 3 nodes)",
+        "Implement database sharding for users/posts collections",
+        "Deploy behind load balancer (nginx/HAProxy)",
+        "Run multiple Uvicorn workers (gunicorn + uvicorn)",
+        "Implement Kubernetes deployment with HPA",
+        "Add Redis for session management",
+        "Implement API response caching",
+        "Add query result caching for expensive operations",
+        "Migrate to Celery + Redis for distributed task queue",
+        "Implement Redis-based distributed rate limiting",
+        "Migrate to S3/GCS for file storage"
+      ]
+    }
+  },
+  "summary": {
+    "score": 70,
+    "verdict": "NEEDS WORK",
+    "bottleneck_count": 1,
+    "max_estimated_users": 5000
+  },
+  "bottlenecks": [
+    "Auth failures under load: 20 failed"
+  ],
+  "recommendations": [
+    "1. \ud83d\udd34 CRITICAL: Deploy MongoDB replica set with read replicas",
+    "2. \ud83d\udd34 CRITICAL: Add Redis for caching + session management",
+    "3. \ud83d\udd34 CRITICAL: Implement horizontal scaling with load balancer",
+    "4. \ud83d\udfe0 HIGH: Migrate file storage to cloud (S3/GCS)",
+    "5. \ud83d\udfe0 HIGH: Switch to Celery + Redis for background jobs",
+    "6. \ud83d\udfe1 MEDIUM: Add CDN for static assets",
+    "7. \ud83d\udfe1 MEDIUM: Implement database connection pooling",
+    "8. \ud83d\udfe2 LOW: Add APM monitoring (DataDog/NewRelic)"
+  ]
+}

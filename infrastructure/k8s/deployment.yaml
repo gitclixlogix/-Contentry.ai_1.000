@@ -1,0 +1,388 @@
+# =============================================================================
+# Kubernetes Deployment for Contentry.ai - 100K+ Users
+# =============================================================================
+# 
+# Deploy with: kubectl apply -f k8s/
+# 
+# Components:
+# - API Deployment with HPA (auto-scaling)
+# - MongoDB StatefulSet (replica set)
+# - Redis Deployment
+# - Nginx Ingress
+# - ConfigMaps and Secrets
+# =============================================================================
+
+---
+# Namespace
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: contentry
+  labels:
+    app: contentry
+
+---
+# ConfigMap for application configuration
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: contentry-config
+  namespace: contentry
+data:
+  DB_NAME: "contentry_db"
+  LOG_LEVEL: "info"
+  WORKERS_PER_POD: "4"
+  MAX_CONNECTIONS: "1000"
+
+---
+# Secret for sensitive data (base64 encoded)
+apiVersion: v1
+kind: Secret
+metadata:
+  name: contentry-secrets
+  namespace: contentry
+type: Opaque
+data:
+  JWT_SECRET_KEY: Y2hhbmdlLXRoaXMtaW4tcHJvZHVjdGlvbg==  # change-this-in-production
+  MONGO_URL: bW9uZ29kYjovL21vbmdvZGItMC5tb25nb2RiLXNlcnZpY2U6MjcwMTc=
+  REDIS_URL: cmVkaXM6Ly9yZWRpcy1zZXJ2aWNlOjYzNzk=
+
+---
+# API Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: contentry-api
+  namespace: contentry
+  labels:
+    app: contentry-api
+spec:
+  replicas: 4  # Start with 4, HPA will scale
+  selector:
+    matchLabels:
+      app: contentry-api
+  template:
+    metadata:
+      labels:
+        app: contentry-api
+    spec:
+      containers:
+      - name: api
+        image: contentry/api:latest
+        ports:
+        - containerPort: 8001
+        envFrom:
+        - configMapRef:
+            name: contentry-config
+        - secretRef:
+            name: contentry-secrets
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "500m"
+          limits:
+            memory: "2Gi"
+            cpu: "2000m"
+        livenessProbe:
+          httpGet:
+            path: /health/live
+            port: 8001
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /health/ready
+            port: 8001
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          timeoutSeconds: 3
+          failureThreshold: 3
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                  - contentry-api
+              topologyKey: kubernetes.io/hostname
+
+---
+# API Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: contentry-api-service
+  namespace: contentry
+spec:
+  selector:
+    app: contentry-api
+  ports:
+  - port: 8001
+    targetPort: 8001
+  type: ClusterIP
+
+---
+# Horizontal Pod Autoscaler
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: contentry-api-hpa
+  namespace: contentry
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: contentry-api
+  minReplicas: 4
+  maxReplicas: 20
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 80
+  behavior:
+    scaleUp:
+      stabilizationWindowSeconds: 60
+      policies:
+      - type: Pods
+        value: 4
+        periodSeconds: 60
+    scaleDown:
+      stabilizationWindowSeconds: 300
+      policies:
+      - type: Percent
+        value: 25
+        periodSeconds: 120
+
+---
+# Redis Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis
+  namespace: contentry
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis
+  template:
+    metadata:
+      labels:
+        app: redis
+    spec:
+      containers:
+      - name: redis
+        image: redis:7-alpine
+        ports:
+        - containerPort: 6379
+        command:
+        - redis-server
+        - --appendonly
+        - "yes"
+        - --maxmemory
+        - "1gb"
+        - --maxmemory-policy
+        - allkeys-lru
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "100m"
+          limits:
+            memory: "1Gi"
+            cpu: "500m"
+        volumeMounts:
+        - name: redis-data
+          mountPath: /data
+      volumes:
+      - name: redis-data
+        persistentVolumeClaim:
+          claimName: redis-pvc
+
+---
+# Redis Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-service
+  namespace: contentry
+spec:
+  selector:
+    app: redis
+  ports:
+  - port: 6379
+    targetPort: 6379
+
+---
+# Redis PVC
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: redis-pvc
+  namespace: contentry
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+
+---
+# MongoDB StatefulSet (Replica Set)
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mongodb
+  namespace: contentry
+spec:
+  serviceName: mongodb-service
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mongodb
+  template:
+    metadata:
+      labels:
+        app: mongodb
+    spec:
+      containers:
+      - name: mongodb
+        image: mongo:7
+        ports:
+        - containerPort: 27017
+        command:
+        - mongod
+        - --replSet
+        - rs0
+        - --bind_ip_all
+        resources:
+          requests:
+            memory: "1Gi"
+            cpu: "500m"
+          limits:
+            memory: "4Gi"
+            cpu: "2000m"
+        volumeMounts:
+        - name: mongodb-data
+          mountPath: /data/db
+  volumeClaimTemplates:
+  - metadata:
+      name: mongodb-data
+    spec:
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 50Gi
+
+---
+# MongoDB Headless Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongodb-service
+  namespace: contentry
+spec:
+  clusterIP: None
+  selector:
+    app: mongodb
+  ports:
+  - port: 27017
+    targetPort: 27017
+
+---
+# Ingress (nginx-ingress-controller required)
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: contentry-ingress
+  namespace: contentry
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/proxy-body-size: "100m"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "120"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "120"
+    nginx.ingress.kubernetes.io/rate-limit: "100"
+    nginx.ingress.kubernetes.io/rate-limit-window: "1m"
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  tls:
+  - hosts:
+    - api.contentry.ai
+    secretName: contentry-tls
+  rules:
+  - host: api.contentry.ai
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: contentry-api-service
+            port:
+              number: 8001
+
+---
+# Pod Disruption Budget (ensure availability during updates)
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: contentry-api-pdb
+  namespace: contentry
+spec:
+  minAvailable: 2
+  selector:
+    matchLabels:
+      app: contentry-api
+
+---
+# Network Policy (restrict traffic)
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: contentry-network-policy
+  namespace: contentry
+spec:
+  podSelector:
+    matchLabels:
+      app: contentry-api
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: ingress-nginx
+    ports:
+    - protocol: TCP
+      port: 8001
+  egress:
+  - to:
+    - podSelector:
+        matchLabels:
+          app: mongodb
+    ports:
+    - protocol: TCP
+      port: 27017
+  - to:
+    - podSelector:
+        matchLabels:
+          app: redis
+    ports:
+    - protocol: TCP
+      port: 6379

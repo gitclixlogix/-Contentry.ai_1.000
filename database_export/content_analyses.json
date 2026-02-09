@@ -1,0 +1,588 @@
+[
+  {
+    "_id": "692c44af56b2babba1022c5e",
+    "id": "3b573ab9-f344-4cbb-8fe7-5d417f5b71f1",
+    "user_id": "demo-enterprise-admin-id",
+    "enterprise_id": "demo-enterprise-001",
+    "content": "Our CEO demands immediate compliance. Do exactly as told without question. Hierarchy must be respected at all times.",
+    "analysis_result": {
+      "cultural_analysis": {
+        "dimensions": [
+          {
+            "dimension": "Power Distance",
+            "score": 45,
+            "cultures_affected": [
+              "Japan",
+              "China",
+              "Korea"
+            ]
+          },
+          {
+            "dimension": "Individualism vs Collectivism",
+            "score": 55,
+            "cultures_affected": [
+              "Japan",
+              "India"
+            ]
+          }
+        ]
+      },
+      "compliance_analysis": {
+        "violation_type": "tone_issue",
+        "severity": "moderate"
+      },
+      "summary": "Test analysis",
+      "flagged_status": "flagged"
+    },
+    "created_at": "2025-11-30T13:20:47.611037+00:00",
+    "language": "en"
+  },
+  {
+    "_id": "692c44af56b2babba1022c5f",
+    "id": "f1e492dd-2867-4f12-9002-ebecd7b82d60",
+    "user_id": "demo-enterprise-admin-id",
+    "enterprise_id": "demo-enterprise-001",
+    "content": "CONFIDENTIAL: Our new product launch strategy is to undercut competitors by 40%. Share details: revenue $5M, costs $2M.",
+    "analysis_result": {
+      "cultural_analysis": {
+        "dimensions": [
+          {
+            "dimension": "Uncertainty Avoidance",
+            "score": 65,
+            "cultures_affected": [
+              "Germany",
+              "Japan"
+            ]
+          },
+          {
+            "dimension": "Power Distance",
+            "score": 68,
+            "cultures_affected": [
+              "France"
+            ]
+          }
+        ]
+      },
+      "compliance_analysis": {
+        "violation_type": "confidential_info",
+        "severity": "critical"
+      },
+      "summary": "Test analysis",
+      "flagged_status": "flagged"
+    },
+    "created_at": "2025-11-30T13:20:47.628923+00:00",
+    "language": "en"
+  },
+  {
+    "_id": "692c44af56b2babba1022c60",
+    "id": "2776c9fa-da08-4fb2-9b7f-d558a1ffb3ab",
+    "user_id": "demo-enterprise-admin-id",
+    "enterprise_id": "demo-enterprise-001",
+    "content": "Amazing new skincare product! Get 20% off with my link. Works miracles on your skin!",
+    "analysis_result": {
+      "cultural_analysis": {
+        "dimensions": [
+          {
+            "dimension": "Long-term vs Short-term Orientation",
+            "score": 62,
+            "cultures_affected": [
+              "China",
+              "Japan",
+              "Korea"
+            ]
+          },
+          {
+            "dimension": "Masculinity vs Femininity",
+            "score": 58,
+            "cultures_affected": [
+              "Sweden",
+              "Norway"
+            ]
+          }
+        ]
+      },
+      "compliance_analysis": {
+        "violation_type": "disclosure_missing",
+        "severity": "high"
+      },
+      "summary": "Test analysis",
+      "flagged_status": "flagged"
+    },
+    "created_at": "2025-11-30T13:20:47.629668+00:00",
+    "language": "en"
+  },
+  {
+    "_id": "692c44af56b2babba1022c61",
+    "id": "1ca5f57a-4a6e-457a-ba8c-95855819d5b8",
+    "user_id": "demo-enterprise-admin-id",
+    "enterprise_id": "demo-enterprise-001",
+    "content": "Women are naturally better at these soft skills. Men should focus on technical roles.",
+    "analysis_result": {
+      "cultural_analysis": {
+        "dimensions": [
+          {
+            "dimension": "Masculinity vs Femininity",
+            "score": 35,
+            "cultures_affected": [
+              "Sweden",
+              "Netherlands",
+              "Denmark",
+              "Norway"
+            ]
+          },
+          {
+            "dimension": "Power Distance",
+            "score": 40,
+            "cultures_affected": [
+              "USA",
+              "UK"
+            ]
+          }
+        ]
+      },
+      "compliance_analysis": {
+        "violation_type": "harassment",
+        "severity": "severe"
+      },
+      "summary": "Test analysis",
+      "flagged_status": "flagged"
+    },
+    "created_at": "2025-11-30T13:20:47.630235+00:00",
+    "language": "en"
+  },
+  {
+    "_id": "692c44af56b2babba1022c62",
+    "id": "0f130ede-68c6-4506-9f84-9348a5cbbf00",
+    "user_id": "demo-enterprise-admin-id",
+    "enterprise_id": "demo-enterprise-001",
+    "content": "Check out this insider tip! Our stock is about to skyrocket after the merger announcement tomorrow!",
+    "analysis_result": {
+      "cultural_analysis": {
+        "dimensions": [
+          {
+            "dimension": "Uncertainty Avoidance",
+            "score": 50,
+            "cultures_affected": [
+              "USA",
+              "UK"
+            ]
+          },
+          {
+            "dimension": "Individualism vs Collectivism",
+            "score": 55,
+            "cultures_affected": [
+              "Japan",
+              "China"
+            ]
+          }
+        ]
+      },
+      "compliance_analysis": {
+        "violation_type": "confidential_info",
+        "severity": "critical"
+      },
+      "summary": "Test analysis",
+      "flagged_status": "flagged"
+    },
+    "created_at": "2025-11-30T13:20:47.630628+00:00",
+    "language": "en"
+  },
+  {
+    "_id": "692c44af56b2babba1022c63",
+    "id": "57657e77-aea8-4c7c-9ca2-7471dd415534",
+    "user_id": "demo-enterprise-admin-id",
+    "enterprise_id": "demo-enterprise-001",
+    "content": "Looking forward to working with our Japanese partners. Please prepare detailed reports and show proper respect to senior management.",
+    "analysis_result": {
+      "cultural_analysis": {
+        "dimensions": [
+          {
+            "dimension": "Power Distance",
+            "score": 48,
+            "cultures_affected": [
+              "Japan",
+              "Korea",
+              "China"
+            ]
+          },
+          {
+            "dimension": "Uncertainty Avoidance",
+            "score": 52,
+            "cultures_affected": [
+              "Germany",
+              "Japan"
+            ]
+          }
+        ]
+      },
+      "compliance_analysis": {
+        "violation_type": "none",
+        "severity": "none"
+      },
+      "summary": "Test analysis",
+      "flagged_status": "approved"
+    },
+    "created_at": "2025-11-30T13:20:47.631248+00:00",
+    "language": "en"
+  },
+  {
+    "_id": "692c44af56b2babba1022c64",
+    "id": "a08fdb0f-74b0-4566-97ef-a72933984dc5",
+    "user_id": "demo-enterprise-admin-id",
+    "enterprise_id": "demo-enterprise-001",
+    "content": "Just signed an NDA but I'm so excited about this new client! Can't say who but they're HUGE in the tech industry.",
+    "analysis_result": {
+      "cultural_analysis": {
+        "dimensions": [
+          {
+            "dimension": "Individualism vs Collectivism",
+            "score": 45,
+            "cultures_affected": [
+              "Japan",
+              "China",
+              "India"
+            ]
+          },
+          {
+            "dimension": "Long-term vs Short-term Orientation",
+            "score": 58,
+            "cultures_affected": [
+              "China",
+              "Japan"
+            ]
+          }
+        ]
+      },
+      "compliance_analysis": {
+        "violation_type": "nda_breach",
+        "severity": "critical"
+      },
+      "summary": "Test analysis",
+      "flagged_status": "flagged"
+    },
+    "created_at": "2025-11-30T13:20:47.631739+00:00",
+    "language": "en"
+  },
+  {
+    "_id": "692c44af56b2babba1022c65",
+    "id": "e013447b-af51-4809-b08e-cb628191edf7",
+    "user_id": "demo-enterprise-admin-id",
+    "enterprise_id": "demo-enterprise-001",
+    "content": "Everyone must work overtime this weekend. No exceptions. Family time can wait.",
+    "analysis_result": {
+      "cultural_analysis": {
+        "dimensions": [
+          {
+            "dimension": "Indulgence vs Restraint",
+            "score": 38,
+            "cultures_affected": [
+              "Spain",
+              "Italy",
+              "Brazil"
+            ]
+          },
+          {
+            "dimension": "Power Distance",
+            "score": 42,
+            "cultures_affected": [
+              "Denmark",
+              "Sweden",
+              "Netherlands"
+            ]
+          },
+          {
+            "dimension": "Masculinity vs Femininity",
+            "score": 55,
+            "cultures_affected": [
+              "Norway",
+              "Sweden"
+            ]
+          }
+        ]
+      },
+      "compliance_analysis": {
+        "violation_type": "policy_breach",
+        "severity": "high"
+      },
+      "summary": "Test analysis",
+      "flagged_status": "flagged"
+    },
+    "created_at": "2025-11-30T13:20:47.632152+00:00",
+    "language": "en"
+  },
+  {
+    "_id": "692c44af56b2babba1022c66",
+    "id": "96c77559-e337-4b26-8b98-b05e7f35fac3",
+    "user_id": "demo-enterprise-admin-id",
+    "enterprise_id": "demo-enterprise-001",
+    "content": "Promoting our new partnership with @BrandX! Love their products and my followers get special discount.",
+    "analysis_result": {
+      "cultural_analysis": {
+        "dimensions": [
+          {
+            "dimension": "Uncertainty Avoidance",
+            "score": 68,
+            "cultures_affected": [
+              "Japan"
+            ]
+          },
+          {
+            "dimension": "Power Distance",
+            "score": 65,
+            "cultures_affected": [
+              "France"
+            ]
+          }
+        ]
+      },
+      "compliance_analysis": {
+        "violation_type": "disclosure_missing",
+        "severity": "high"
+      },
+      "summary": "Test analysis",
+      "flagged_status": "flagged"
+    },
+    "created_at": "2025-11-30T13:20:47.632722+00:00",
+    "language": "en"
+  },
+  {
+    "_id": "692c44af56b2babba1022c67",
+    "id": "4e8bc090-26cc-4dbe-aaea-a5a340f84407",
+    "user_id": "demo-enterprise-admin-id",
+    "enterprise_id": "demo-enterprise-001",
+    "content": "Quick decision needed! Act now or lose this opportunity. Time is running out!",
+    "analysis_result": {
+      "cultural_analysis": {
+        "dimensions": [
+          {
+            "dimension": "Long-term vs Short-term Orientation",
+            "score": 35,
+            "cultures_affected": [
+              "China",
+              "Japan",
+              "Korea",
+              "Germany"
+            ]
+          },
+          {
+            "dimension": "Uncertainty Avoidance",
+            "score": 45,
+            "cultures_affected": [
+              "Germany",
+              "Japan",
+              "France"
+            ]
+          }
+        ]
+      },
+      "compliance_analysis": {
+        "violation_type": "tone_issue",
+        "severity": "moderate"
+      },
+      "summary": "Test analysis",
+      "flagged_status": "flagged"
+    },
+    "created_at": "2025-11-30T13:20:47.633286+00:00",
+    "language": "en"
+  },
+  {
+    "_id": "692c44af56b2babba1022c68",
+    "id": "bef2ba51-7b63-49dc-8c54-24bcd1a5979c",
+    "user_id": "demo-enterprise-admin-id",
+    "enterprise_id": "demo-enterprise-001",
+    "content": "Our Indian colleagues need to be more assertive. They should speak up more in meetings like we do.",
+    "analysis_result": {
+      "cultural_analysis": {
+        "dimensions": [
+          {
+            "dimension": "Power Distance",
+            "score": 32,
+            "cultures_affected": [
+              "India",
+              "Mexico",
+              "Malaysia"
+            ]
+          },
+          {
+            "dimension": "Individualism vs Collectivism",
+            "score": 28,
+            "cultures_affected": [
+              "India",
+              "China",
+              "Japan"
+            ]
+          },
+          {
+            "dimension": "Uncertainty Avoidance",
+            "score": 55,
+            "cultures_affected": [
+              "India"
+            ]
+          }
+        ]
+      },
+      "compliance_analysis": {
+        "violation_type": "harassment",
+        "severity": "severe"
+      },
+      "summary": "Test analysis",
+      "flagged_status": "flagged"
+    },
+    "created_at": "2025-11-30T13:20:47.633790+00:00",
+    "language": "en"
+  },
+  {
+    "_id": "692c44af56b2babba1022c69",
+    "id": "bc6f97b7-18d3-44e1-afb6-2365ad3acde1",
+    "user_id": "demo-enterprise-admin-id",
+    "enterprise_id": "demo-enterprise-001",
+    "content": "Shared customer data with our partner company to improve service. Hope it helps both teams!",
+    "analysis_result": {
+      "cultural_analysis": {
+        "dimensions": [
+          {
+            "dimension": "Individualism vs Collectivism",
+            "score": 60,
+            "cultures_affected": [
+              "Germany",
+              "France"
+            ]
+          },
+          {
+            "dimension": "Uncertainty Avoidance",
+            "score": 50,
+            "cultures_affected": [
+              "Germany"
+            ]
+          }
+        ]
+      },
+      "compliance_analysis": {
+        "violation_type": "confidential_info",
+        "severity": "critical"
+      },
+      "summary": "Test analysis",
+      "flagged_status": "flagged"
+    },
+    "created_at": "2025-11-30T13:20:47.634249+00:00",
+    "language": "en"
+  },
+  {
+    "_id": "692c44af56b2babba1022c6a",
+    "id": "90ce4ebb-21c4-4490-9aa9-b390193b284a",
+    "user_id": "demo-enterprise-admin-id",
+    "enterprise_id": "demo-enterprise-001",
+    "content": "Take risks! Don't overthink it. Just do it and see what happens.",
+    "analysis_result": {
+      "cultural_analysis": {
+        "dimensions": [
+          {
+            "dimension": "Uncertainty Avoidance",
+            "score": 28,
+            "cultures_affected": [
+              "Germany",
+              "Japan",
+              "France",
+              "Russia"
+            ]
+          },
+          {
+            "dimension": "Long-term vs Short-term Orientation",
+            "score": 42,
+            "cultures_affected": [
+              "China",
+              "Japan",
+              "Korea"
+            ]
+          }
+        ]
+      },
+      "compliance_analysis": {
+        "violation_type": "policy_breach",
+        "severity": "moderate"
+      },
+      "summary": "Test analysis",
+      "flagged_status": "flagged"
+    },
+    "created_at": "2025-11-30T13:20:47.634551+00:00",
+    "language": "en"
+  },
+  {
+    "_id": "692c44af56b2babba1022c6b",
+    "id": "3b71e665-3b4e-4b4c-9deb-248cb0381d2f",
+    "user_id": "demo-enterprise-admin-id",
+    "enterprise_id": "demo-enterprise-001",
+    "content": "Team building this Friday! Drinks mandatory for everyone. Be there or miss out on career opportunities.",
+    "analysis_result": {
+      "cultural_analysis": {
+        "dimensions": [
+          {
+            "dimension": "Indulgence vs Restraint",
+            "score": 48,
+            "cultures_affected": [
+              "Saudi Arabia",
+              "Pakistan",
+              "Egypt"
+            ]
+          },
+          {
+            "dimension": "Power Distance",
+            "score": 38,
+            "cultures_affected": [
+              "Denmark",
+              "Sweden"
+            ]
+          }
+        ]
+      },
+      "compliance_analysis": {
+        "violation_type": "harassment",
+        "severity": "high"
+      },
+      "summary": "Test analysis",
+      "flagged_status": "flagged"
+    },
+    "created_at": "2025-11-30T13:20:47.634811+00:00",
+    "language": "en"
+  },
+  {
+    "_id": "692c44af56b2babba1022c6c",
+    "id": "c8d7ac49-9a03-4642-b64e-2dfdac58a214",
+    "user_id": "demo-enterprise-admin-id",
+    "enterprise_id": "demo-enterprise-001",
+    "content": "Focus on individual achievements. Your personal success is what matters most.",
+    "analysis_result": {
+      "cultural_analysis": {
+        "dimensions": [
+          {
+            "dimension": "Individualism vs Collectivism",
+            "score": 25,
+            "cultures_affected": [
+              "Japan",
+              "China",
+              "Korea",
+              "India",
+              "Brazil"
+            ]
+          },
+          {
+            "dimension": "Masculinity vs Femininity",
+            "score": 60,
+            "cultures_affected": [
+              "Sweden",
+              "Netherlands"
+            ]
+          }
+        ]
+      },
+      "compliance_analysis": {
+        "violation_type": "tone_issue",
+        "severity": "moderate"
+      },
+      "summary": "Test analysis",
+      "flagged_status": "flagged"
+    },
+    "created_at": "2025-11-30T13:20:47.635118+00:00",
+    "language": "en"
+  }
+]

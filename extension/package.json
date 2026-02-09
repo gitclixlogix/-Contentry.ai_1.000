@@ -1,0 +1,45 @@
+{
+  "name": "contentry-browser-extension",
+  "displayName": "Contentry.ai - Content Analysis Co-pilot",
+  "version": "1.0.0",
+  "description": "Real-time content analysis and compliance checking for any webpage",
+  "author": "Contentry.ai",
+  "scripts": {
+    "dev": "plasmo dev",
+    "build": "plasmo build",
+    "build:chrome": "plasmo build --target=chrome-mv3",
+    "build:edge": "plasmo build --target=edge-mv3",
+    "package": "plasmo package"
+  },
+  "dependencies": {
+    "plasmo": "^0.89.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "lucide-react": "^0.263.1"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.246",
+    "@types/node": "^20.8.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.3.3",
+    "typescript": "^5.2.2"
+  },
+  "manifest": {
+    "host_permissions": [
+      "https://*/*",
+      "http://*/*"
+    ],
+    "permissions": [
+      "storage",
+      "activeTab",
+      "sidePanel",
+      "tabs"
+    ],
+    "side_panel": {
+      "default_path": "sidepanel.html"
+    }
+  }
+}

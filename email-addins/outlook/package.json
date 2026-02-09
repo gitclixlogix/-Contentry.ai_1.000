@@ -1,0 +1,25 @@
+{
+  "name": "@contentry/outlook-addin",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@contentry/shared": "*",
+    "@microsoft/office-js": "^1.1.73",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "lucide-react": "^0.263.1"
+  },
+  "devDependencies": {
+    "@types/office-js": "^1.0.256",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@vitejs/plugin-react": "^4.0.0",
+    "typescript": "^5.2.2",
+    "vite": "^4.4.0"
+  }
+}

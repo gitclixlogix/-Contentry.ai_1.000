@@ -1,0 +1,20 @@
+{
+  "description": "Mapping of countries to their primary cultural blocs.",
+  "blocs": {
+    "Latin America (LATAM)": ["Mexico", "Brazil", "Argentina", "Colombia", "Chile", "Peru"],
+    "Middle East & North Africa (MENA)": ["Saudi Arabia", "UAE", "Egypt", "Morocco", "Algeria", "Iran", "Iraq"],
+    "Sub-Saharan Africa": ["Nigeria", "South Africa", "Kenya", "Ghana", "Ethiopia", "Angola"],
+    "Nordic Europe": ["Sweden", "Norway", "Denmark", "Finland", "Iceland"],
+    "Eastern Europe (Post-Soviet)": ["Russia", "Ukraine", "Poland", "Czech Republic", "Hungary", "Romania", "Belarus"],
+    "Southeast Asia (ASEAN)": ["Indonesia", "Thailand", "Vietnam", "Philippines", "Malaysia", "Singapore"],
+    "The Anglosphere": ["USA", "United Kingdom", "Canada", "Australia", "New Zealand", "Ireland"],
+    "Francophone Africa": ["Senegal", "Ivory Coast", "Cameroon", "DRC"],
+    "The Balkans": ["Serbia", "Croatia", "Bosnia and Herzegovina", "Albania", "North Macedonia"],
+    "Confucian Asia": ["China", "Japan", "South Korea", "Taiwan", "Vietnam", "Singapore", "Hong Kong"],
+    "Germanic Europe": ["Germany", "Austria", "Switzerland"],
+    "Southern Europe": ["Italy", "Spain", "Portugal", "Greece"],
+    "Caribbean": ["Jamaica", "Trinidad and Tobago", "Bahamas", "Dominican Republic"],
+    "Central Asia": ["Kazakhstan", "Uzbekistan", "Turkmenistan", "Kyrgyzstan", "Tajikistan"],
+    "The Stans": ["Kazakhstan", "Uzbekistan", "Turkmenistan", "Kyrgyzstan", "Tajikistan", "Afghanistan", "Pakistan"]
+  }
+}

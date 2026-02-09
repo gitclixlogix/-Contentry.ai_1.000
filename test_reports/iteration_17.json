@@ -1,0 +1,62 @@
+{
+  "summary": "Frontend testing of approval workflow visibility in Personal vs Company Workspace completed successfully. All 4 test cases passed. The fix ensures approval workflow (Submit for Approval button, manager approval message) only appears in Company Workspace, while Personal Workspace shows Post to Social button instead.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [],
+    "notes": [
+      "Approval workflow correctly hidden in Personal Workspace",
+      "Post to Social button correctly shown in Personal Workspace",
+      "Submit for Approval button correctly shown in Company Workspace for Creator role",
+      "AI conversation dialogue correctly displays user's original prompt"
+    ]
+  },
+  "passed_tests": [
+    "Test 1: Personal Workspace > Content Generation - NO 'Submit for Approval' button (PASS)",
+    "Test 1: Personal Workspace > Content Generation - NO 'requires manager approval' message (PASS)",
+    "Test 2: AI Conversation dialogue shows user's original prompt (PASS - visible in screenshots)",
+    "Test 3: Company Workspace > Content Generation - 'Submit for Approval' button IS shown for Creator role (PASS)",
+    "Test 4: Personal Workspace has 'Post to Social' button, Company Workspace has 'Submit for Approval' (PASS)"
+  ],
+  "test_evidence": {
+    "company_workspace": {
+      "header_shows": "Company Works...",
+      "strategic_profile": "Default Company Profile",
+      "submit_for_approval_visible": true,
+      "post_to_social_visible": false,
+      "conversation_shows_prompt": "Write about company culture"
+    },
+    "personal_workspace": {
+      "header_shows": "Personal Works...",
+      "strategic_profile": "Default Profile",
+      "submit_for_approval_visible": false,
+      "post_to_social_visible": true,
+      "conversation_shows_prompt": "Write about personal productivity"
+    }
+  },
+  "test_report_links": [
+    "/app/frontend/app/contentry/content-moderation/ContentGenerationTab.jsx"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "loadUserPermissions() at lines 333-355 correctly checks isEnterpriseWorkspace and sets needs_approval=false for Personal Workspace",
+    "useEffect at lines 521-527 correctly reloads permissions when workspace changes (isEnterpriseWorkspace, enterpriseInfo?.id)",
+    "UI rendering at lines 2212-2238 correctly shows Submit for Approval only when userPermissions?.needs_approval is true"
+  ],
+  "updated_files": [],
+  "success_rate": {
+    "backend": "N/A (frontend only testing)",
+    "frontend": "100% (4/4 tests passed)"
+  },
+  "test_credentials": {
+    "Demo Creator": "alex.martinez@techcorp-demo.com / DemoCreator!123"
+  },
+  "seed_data_creation": "None",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Approval workflow visibility is now correctly workspace-aware. Key behaviors: 1) Personal Workspace shows 'Post to Social' button (no approval needed), 2) Company Workspace shows 'Submit for Approval' button for Creator role, 3) AI conversation dialogue correctly displays user's original prompt. The fix was already in place - the loadUserPermissions() function correctly checks isEnterpriseWorkspace and the useEffect correctly reloads permissions when workspace changes."
+}

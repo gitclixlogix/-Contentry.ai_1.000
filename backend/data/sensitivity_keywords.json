@@ -1,0 +1,49 @@
+{
+  "description": "Keyword lists for the 11 Specific Sensitivity Frameworks.",
+  "frameworks": {
+    "islamic_compliance": {
+      "name": "Religious Compliance (Islamic)",
+      "keywords": ["halal", "haram", "modesty", "Ramadan", "blasphemy", "alcohol", "pork", "wine", "beer", "bikini", "revealing clothing", "mosque", "Prophet"]
+    },
+    "judeo_christian_compliance": {
+      "name": "Religious Compliance (Judeo-Christian)",
+      "keywords": ["blasphemy", "sacrilege", "Jesus", "Christ", "cross", "church", "Bible", "Torah"]
+    },
+    "hindu_buddhist_compliance": {
+      "name": "Religious Compliance (Hindu/Buddhist)",
+      "keywords": ["deity", "karma", "dharma", "non-violence", "vegetarianism", "cow", "Buddha", "temple", "shoes"]
+    },
+    "lgbtq_acceptance": {
+      "name": "LGBTQ+ Acceptance Spectrum",
+      "keywords": ["gay", "lesbian", "bisexual", "transgender", "queer", "LGBTQ", "Pride", "rainbow flag", "same-sex couple", "non-binary"]
+    },
+    "gender_roles_feminism": {
+      "name": "Gender Roles & Feminism",
+      "keywords": ["sexist", "misogyny", "patriarchy", "feminism", "gender equality", "gender pay gap", "housewife", "stereotype", "empowerment"]
+    },
+    "political_speech_censorship": {
+      "name": "Political Speech & Censorship",
+      "keywords": ["democracy", "human rights", "authoritarian", "censorship", "dictator", "protest", "Tiananmen", "Tibet", "Taiwan independence"]
+    },
+    "historical_grievances": {
+      "name": "Historical Grievances",
+      "keywords": ["colonialism", "slavery", "Holocaust", "genocide", "apartheid", "comfort women", "partition"]
+    },
+    "social_caste_hierarchy": {
+      "name": "Social Caste & Hierarchy",
+      "keywords": ["caste", "untouchable", "Dalit", "class system", "aristocracy", "proletariat", "bourgeoisie"]
+    },
+    "environmentalism_sustainability": {
+      "name": "Environmentalism & Sustainability",
+      "keywords": ["climate change", "global warming", "pollution", "sustainability", "greenwashing", "deforestation", "carbon footprint"]
+    },
+    "body_image_positivity": {
+      "name": "Body Image & Positivity",
+      "keywords": ["fat", "skinny", "diet", "anorexia", "bulimia", "body shaming", "plus-size", "beauty standards"]
+    },
+    "racial_ethnic_sensitivity": {
+      "name": "Racial & Ethnic Sensitivity",
+      "keywords": ["racist", "racism", "stereotype", "slur", "cultural appropriation", "blackface", "ethnic joke"]
+    }
+  }
+}

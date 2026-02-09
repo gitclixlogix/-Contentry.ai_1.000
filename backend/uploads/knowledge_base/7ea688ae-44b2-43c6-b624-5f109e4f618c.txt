@@ -1,0 +1,23 @@
+This is a brand guidelines document for Contentry AI.
+
+Our brand voice should be:
+- Professional but approachable
+- Informative and helpful
+- Innovative and forward-thinking
+
+Key messages:
+1. AI-powered content creation saves time and improves quality
+2. Our platform helps businesses maintain brand consistency
+3. We prioritize user privacy and data security
+
+Target audience:
+- Marketing professionals
+- Content creators
+- Social media managers
+- Small business owners
+
+Do not mention:
+- Competitor products by name
+- Pricing details in promotional content
+- Unrealistic promises about AI capabilities
+

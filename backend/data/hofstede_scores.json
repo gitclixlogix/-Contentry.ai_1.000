@@ -1,0 +1,30 @@
+{
+  "description": "Hofstede's 6-D Model scores for 25 geopolitical markets. Source: The Culture Factor, 2023.",
+  "countries": {
+    "USA": {"pdi": 40, "idv": 91, "mas": 62, "uai": 46, "lto": 26, "ivr": 68},
+    "China": {"pdi": 80, "idv": 43, "mas": 66, "uai": 30, "lto": 77, "ivr": 24},
+    "Japan": {"pdi": 54, "idv": 46, "mas": 95, "uai": 92, "lto": 88, "ivr": 42},
+    "Germany": {"pdi": 35, "idv": 79, "mas": 66, "uai": 65, "lto": 57, "ivr": 40},
+    "United Kingdom": {"pdi": 35, "idv": 89, "mas": 66, "uai": 35, "lto": 51, "ivr": 69},
+    "France": {"pdi": 68, "idv": 74, "mas": 43, "uai": 86, "lto": 60, "ivr": 48},
+    "India": {"pdi": 77, "idv": 24, "mas": 56, "uai": 40, "lto": 51, "ivr": 26},
+    "Brazil": {"pdi": 69, "idv": 36, "mas": 49, "uai": 76, "lto": 28, "ivr": 59},
+    "Canada": {"pdi": 39, "idv": 72, "mas": 52, "uai": 48, "lto": 54, "ivr": 68},
+    "Australia": {"pdi": 38, "idv": 73, "mas": 61, "uai": 51, "lto": 56, "ivr": 71},
+    "South Korea": {"pdi": 60, "idv": 18, "mas": 39, "uai": 85, "lto": 100, "ivr": 29},
+    "Russia": {"pdi": 93, "idv": 39, "mas": 36, "uai": 95, "lto": 81, "ivr": 20},
+    "Italy": {"pdi": 50, "idv": 76, "mas": 70, "uai": 75, "lto": 61, "ivr": 30},
+    "Spain": {"pdi": 57, "idv": 51, "mas": 42, "uai": 86, "lto": 48, "ivr": 44},
+    "Mexico": {"pdi": 81, "idv": 30, "mas": 69, "uai": 82, "lto": 24, "ivr": 97},
+    "Indonesia": {"pdi": 78, "idv": 5, "mas": 46, "uai": 48, "lto": 29, "ivr": 38},
+    "Saudi Arabia": {"pdi": 95, "idv": 25, "mas": 60, "uai": 80, "lto": 36, "ivr": 52},
+    "Turkey": {"pdi": 66, "idv": 37, "mas": 45, "uai": 85, "lto": 46, "ivr": 49},
+    "Switzerland": {"pdi": 34, "idv": 68, "mas": 70, "uai": 58, "lto": 74, "ivr": 66},
+    "Sweden": {"pdi": 31, "idv": 71, "mas": 5, "uai": 29, "lto": 53, "ivr": 78},
+    "Norway": {"pdi": 31, "idv": 69, "mas": 8, "uai": 50, "lto": 35, "ivr": 55},
+    "UAE": {"pdi": 90, "idv": 25, "mas": 50, "uai": 80, "lto": null, "ivr": null},
+    "Israel": {"pdi": 13, "idv": 56, "mas": 47, "uai": 81, "lto": 47, "ivr": null},
+    "South Africa": {"pdi": 49, "idv": 65, "mas": 63, "uai": 49, "lto": 34, "ivr": 63},
+    "Nigeria": {"pdi": 80, "idv": 30, "mas": 60, "uai": 55, "lto": 13, "ivr": 84}
+  }
+}

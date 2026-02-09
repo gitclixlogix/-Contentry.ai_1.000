@@ -1,0 +1,20 @@
+{
+  "name": "contentry-email-addins",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "shared",
+    "gmail",
+    "outlook"
+  ],
+  "scripts": {
+    "dev:gmail": "yarn workspace @contentry/gmail-addin dev",
+    "dev:outlook": "yarn workspace @contentry/outlook-addin dev",
+    "build:gmail": "yarn workspace @contentry/gmail-addin build",
+    "build:outlook": "yarn workspace @contentry/outlook-addin build",
+    "build:all": "yarn build:gmail && yarn build:outlook"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2"
+  }
+}

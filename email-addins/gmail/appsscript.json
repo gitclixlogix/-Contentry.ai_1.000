@@ -1,0 +1,33 @@
+{
+  "timeZone": "America/New_York",
+  "dependencies": {},
+  "exceptionLogging": "STACKDRIVER",
+  "runtimeVersion": "V8",
+  "oauthScopes": [
+    "https://www.googleapis.com/auth/gmail.compose",
+    "https://www.googleapis.com/auth/gmail.addons.execute",
+    "https://www.googleapis.com/auth/gmail.addons.current.message.readonly",
+    "https://www.googleapis.com/auth/script.external_request"
+  ],
+  "addOns": {
+    "common": {
+      "name": "Contentry.ai",
+      "logoUrl": "https://contentry.ai/icon-128.png",
+      "useLocaleFromApp": true,
+      "homepageTrigger": {
+        "runFunction": "onHomepage"
+      }
+    },
+    "gmail": {
+      "composeTrigger": {
+        "selectActions": [
+          {
+            "text": "Analyze with Contentry.ai",
+            "runFunction": "onCompose"
+          }
+        ],
+        "draftAccess": "METADATA"
+      }
+    }
+  }
+}
